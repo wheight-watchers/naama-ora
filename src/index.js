@@ -12,6 +12,9 @@ function doRequest(){
         }
       
       };
+      xhr.onerror = function() {
+        alert("Request failed");
+      };
     xhr.open("GET",url);
     xhr.send();
 }
