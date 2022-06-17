@@ -1,0 +1,6 @@
+{
+  "users": [{ "id": 212, "name": "moshe", "status": "manager" },
+    { "id": 1, "name": "reuven", "status": "user" },
+    { "id": 2, "name": "shimon", "status": "user" },
+    { "id": 3, "name": "levy", "status": "user" }]
+}
