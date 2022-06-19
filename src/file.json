@@ -1,6 +1,65 @@
 {
-  "users": [{ "id": 212, "name": "moshe", "status": "manager" },
-    { "id": 1, "name": "reuven", "status": "user" },
-    { "id": 2, "name": "shimon", "status": "user" },
-    { "id": 3, "name": "levy", "status": "user" }]
+  "manager": { "id": 212, "name": "moshe" },
+  "users": [
+    {
+      "id": 1,
+      "firstName": "reuven",
+      "lastName": "Cohen",
+      "email": "rc@gmail.com",
+      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "height": 1.7,
+      "age": 33,
+      "meetingsWheights": [
+        {
+          "first": 70,
+          "second": 69
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "firstName": "shimon",
+      "lastName": "Cohen",
+      "email": "rc@gmail.com",
+      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "height": 1.7,
+      "age": 33,
+      "meetingsWheights": [
+        {
+          "first": 70,
+          "second": 69
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "firstName": "levy",
+      "lastName": "Cohen",
+      "email": "rc@gmail.com",
+      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "height": 1.7,
+      "age": 33,
+      "meetingsWheights": [
+        {
+          "first": 70,
+          "second": 69
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "firstName": "Yehuda",
+      "lastName": "Cohen",
+      "email": "rc@gmail.com",
+      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "height": 1.7,
+      "age": 33,
+      "meetingsWheights": [
+        {
+          "first": 70,
+          "second": 69
+        }
+      ]
+    }
+  ]
 }
