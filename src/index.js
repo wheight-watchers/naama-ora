@@ -48,7 +48,7 @@ function logIn() {
 function getUsersFormanager() {
   let xhr = new XMLHttpRequest();
   xhr.addEventListener("load", reqListener);
-  xhr.open("GET", "file.json/users");
+  xhr.open("GET", "file.json");
   xhr.addEventListener("loadend", loadEnd);
   xhr.send();
 }
@@ -57,9 +57,7 @@ function request() {
 
   xhr.open(
     "GET",
-    // "C:Users\1\Desktop\Bootcamp👩🏻‍💻\שבוע 1\Task\naama-ora\bootcamp-templatesrc\file.json",
-    "/src/file.json",
-    false
+    "file.json"
   );
 
   try {
