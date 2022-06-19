@@ -16,14 +16,62 @@
 //   xhr.open("GET", url);
 //   xhr.send();
 // }
+function reqListener() {
+  console.log(this.responseText);
+}
+function loadEnd(e) {
+  console.log(
+    "The transfer finished (although we don't know if it succeeded or not)."
+  );
+}
 function logIn() {
   debugger;
-  let mail = document.getElementById('mailInput').value;
-  let pswd = document.getElementById('passwordInput').value;
-  if (mail == 'manager@gmail.com' && pswd == '123') {
-      // window.location.assign('Actions.html')
-      if(window.confirm("welcome"))
-          {window.location.href='Manager.html'}   
+  let mail = document.getElementById("mailInput").value;
+  let pswd = document.getElementById("passwordInput").value;
+  if (mail == "manager@gmail.com" && pswd == "123") {
+    if (window.confirm("welcome")) {
+      window.location.assign("Manager.html");
+      window.location.href = "Manager.html";
+    }
+  } else {
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", reqListener);
+    xhr.open("GET", "file.json/users?id=1");
+    xhr.addEventListener("loadend", loadEnd);
+    xhr.send();
+    if (mail == "manager@gmail.com" && pswd == "123") {
+      window.location.assign("User.html");
+      window.location.href = "User.html";
+    }
   }
-  else {window.location.href='User.html'}   
-};
+}
+function getUsersFormanager() {
+  let xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", reqListener);
+  xhr.open("GET", "file.json/users");
+  xhr.addEventListener("loadend", loadEnd);
+  xhr.send();
+}
+function request() {
+  let xhr = new XMLHttpRequest();
+
+  xhr.open(
+    "GET",
+    // "C:Users\1\Desktop\Bootcamp👩🏻‍💻\שבוע 1\Task\naama-ora\bootcamp-templatesrc\file.json",
+    "/src/file.json",
+    false
+  );
+
+  try {
+    xhr.send();
+    if (xhr.status != 200) {
+      alert(`Error ${xhr.status}: ${xhr.statusText}`);
+    } else {
+      alert(xhr.response);
+    }
+  } catch (err) {
+    // instead of onerror
+    alert("Request failed");
+  }
+}
+request();
