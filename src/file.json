@@ -6,7 +6,7 @@
       "firstName": "reuven",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "address": { "city": "Tel-aviv", "street": "arlozerov","building":5 },
       "height": 1.7,
       "age": 33,
       "meetingsWheights": [
@@ -21,7 +21,7 @@
       "firstName": "shimon",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "address": { "city": "Tel-aviv", "street": "arlozerov" ,"building":5},
       "height": 1.7,
       "age": 33,
       "meetingsWheights": [
@@ -36,7 +36,7 @@
       "firstName": "levy",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "address": { "city": "Tel-aviv", "street": "arlozerov","building":5 },
       "height": 1.7,
       "age": 33,
       "meetingsWheights": [
@@ -51,7 +51,7 @@
       "firstName": "Yehuda",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov" },
+      "address": { "city": "Tel-aviv", "street": "arlozerov" ,"building":5},
       "height": 1.7,
       "age": 33,
       "meetingsWheights": [

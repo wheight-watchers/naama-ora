@@ -16,6 +16,7 @@
 //   xhr.open("GET", url);
 //   xhr.send();
 // }
+let m;
 function reqListener() {
   console.log(this.responseText);
 }
@@ -24,20 +25,57 @@ function loadEnd(e) {
     "The transfer finished (although we don't know if it succeeded or not)."
   );
 }
-function logIn() {
+function getManager() {
+  debugger;
+  try {
+    if (xhr.status != 200) {
+      alert(`Error ${xhr.status}: ${xhr.statusText}`);
+    } else {
+       m = this.response;
+      alert(xhr.response);
+    }
+  } catch (err) {
+    // instead of onerror
+    alert("Request failed");
+  }
+ 
+}
+async function logIn() {
+  // const initialization = async () => {
+  let url = "http://localhost:3000/manager";
+  // const res = await fetch(url);
+  // const manager = await res.json();
+
+  // let table = '';
+  // users.forEach(user => {
+  //     table += ` 
+  //     <tr>
+  //         <th>${user.firstName + ' ' + user.lastName}</th>
+  //         <th>${user.weight.historyWeight[users.length - 1] / Math.sqrt(user.hight)}</th>
+  //         <th><a href="">details</a></th>
+  //     </tr>`
+  // })
+  // const container = document.querySelector('.usersTable');
+  // container.innerHTML += table;
+  // }
   debugger;
   let mail = document.getElementById("mailInput").value;
   let pswd = document.getElementById("passwordInput").value;
-  if (mail == "manager@gmail.com" && pswd == "123") {
+  let managerXHR = new XMLHttpRequest();
+  managerXHR.addEventListener("loadend", getManager);
+  managerXHR.open("GET", url);
+  const res=managerXHR.send();
+  const manager=await res.json();
+  if (mail == manager && pswd == manager) {
     if (window.confirm("welcome")) {
       window.location.assign("Manager.html");
       window.location.href = "Manager.html";
     }
   } else {
-    let xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", reqListener);
-    xhr.open("GET", "file.json/users?id=1");
-    xhr.addEventListener("loadend", loadEnd);
+  let xhr = new XMLHttpRequest();
+    // xhr.addEventListener("load", reqListener);
+    xhr.open("GET", "file.json/users");
+    // xhr.addEventListener("loadend", loadEnd);
     xhr.send();
     if (mail == "manager@gmail.com" && pswd == "123") {
       window.location.assign("User.html");
@@ -55,10 +93,7 @@ function getUsersFormanager() {
 function request() {
   let xhr = new XMLHttpRequest();
 
-  xhr.open(
-    "GET",
-    "file.json"
-  );
+  xhr.open("GET", "file.json");
 
   try {
     xhr.send();
