@@ -1,7 +1,7 @@
 const logIn = () => {
   debugger;
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "file.json");
+  xhr.open("GET", "./db-1655750686617.json");
   xhr.send();
   xhr.onload = () => {
     if (xhr.status != 200) {
@@ -13,13 +13,13 @@ const logIn = () => {
       let pswd = document.getElementById("passwordInput").value;
       if (mail == manager.email && pswd == manager.password) {
         if (window.confirm("welcome")) {
-          window.location.href = "Manager.html";
+          window.location.href = "src/Manager.html";
         }
       } else {
         let users = JSON.parse(xhr.responseText).users;
         console.log(users);
-        if (users.find((u) => u.email == mail))
-          window.location.href = "User.html";
+        if (users.find(u=> u.email == mail)!=null)
+          window.location.href = "src/User.html";
       }
     }
   };
@@ -40,11 +40,11 @@ function directMyDetails(user){
     `<p>${user.wheights.meetings.date+" : "+user.wheights.meetings.wheight}</p>`
   })
   
-  window.location.assign("Details.html") 
+  window.location.assign("src/Details.html") 
 }
 const getUsersForManager = () => {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "./file.json");
+  xhr.open("GET", "./db-1655750686617.json");
   xhr.send();
   xhr.onload = () => {
     if (xhr.status != 200) {

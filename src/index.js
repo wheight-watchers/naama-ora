@@ -61,7 +61,7 @@
       
     }
   };
-  managerXHR.open('GET', './file.json');
+  managerXHR.open('GET', './db-1655750686617.json');
   managerXHR.send();
   // try {
   //   if (managerXHR.status != 200) {

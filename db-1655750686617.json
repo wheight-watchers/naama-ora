@@ -1,12 +1,22 @@
 {
-  "manager": { "id": 212, "first-name": "moshe" ,"last-name":"moshayov","email":"manager@gmail.com","password":"123"},
+  "manager": {
+    "id": 212,
+    "first-name": "moshe",
+    "last-name": "moshayov",
+    "email":"manager@gmail.com",
+    "password":"123"
+  },
   "users": [
     {
       "id": 1,
       "firstName": "reuven",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "address": {
+        "city": "Tel-aviv",
+        "street": "arlozerov",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Wheights": {
@@ -28,7 +38,11 @@
       "firstName": "shimon",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "address": {
+        "city": "Tel-aviv",
+        "street": "arlozerov",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Wheights": {
@@ -50,7 +64,11 @@
       "firstName": "levy",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "address": {
+        "city": "Tel-aviv",
+        "street": "arlozerov",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Wheights": {
@@ -72,7 +90,11 @@
       "firstName": "Yehuda",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "address": {
+        "city": "Tel-aviv",
+        "street": "arlozerov",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Wheights": {
