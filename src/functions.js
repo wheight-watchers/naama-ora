@@ -13,8 +13,8 @@ const logIn = () => {
       let pswd = document.getElementById("passwordInput").value;
       if (mail == manager.email && pswd == manager.id) {
         if (window.confirm("welcome")) {
-           {window.location.href='Manager.html'}  
-        
+          { window.location.href = 'Manager.html' }
+
         }
       } else {
         let users = JSON.parse(xhr.responseText).users;
@@ -26,6 +26,7 @@ const logIn = () => {
   };
 };
 function directMyDetails(user) {
+  debugger;
   const nameContainer = document.querySelector(".userName");
   nameContainer.innerHTML += user.firstName + " " + user.lastName;
   const detailsContainer = document.querySelector(".userDetails");
@@ -44,30 +45,37 @@ function directMyDetails(user) {
   window.location.assign("Details.html")
 }
 const getUsersForManager = () => {
+  debugger;
   const xhr = new XMLHttpRequest();
+
   xhr.open("GET", "./db.json");
   xhr.send();
   xhr.onload = () => {
     if (xhr.status != 200) {
-      alert("Error ${xhr.status}: ${xhr.statusText}");
-    } else {
-      users = JSON.parse(XHR.responseText).users;
-      console.log(users);
-      let tablle = "";
-      const bmi = (user.weight * uer.height) ^ 2
+      alert(`Error ${xhr.status}: ${xhr.statusText}`);
+    }
+    else {
+      let users = JSON.parse(xhr.responseText).users;
+      console.log(users)
+      let table = '';
+      const bmi = (users.weight * users.height) ^ 2
       let color;
+      let green;
+      let red;
       if (bmi < 50)
         color = green;
       else color = red
-      users.foreach((user) => {
+      users.forEach(user => {
         table += `
-      <tr>
-      <th>${user.firstName + " " + user.lastName}</th>
-      <th class=${color}>${"BMI : " + bmi}</th>
-      <th onclick="directMyDetails(${user})">details</th>
-      </tr>
-      `;
-      });
+         <tr>
+        <th>${user.firstName + " " + user.lastName}</th>
+        <th class=${color}>${"BMI : " + bmi}</th>
+        </tr>
+        <button onclick="directMyDetails(${user})">details</button>
+        <br/>
+        `
+  
+      })
       const container = document.querySelector(".usersTable");
       container.innerHTML += table;
     }
