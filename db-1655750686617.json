@@ -1,7 +1,7 @@
 {
   "manager": {
     "id": 212,
-    "first-name": "moshe",
+    "first-name": "Moshe",
     "last-name": "moshayov",
     "email":"manager@gmail.com",
     "password":"123"
@@ -9,7 +9,7 @@
   "users": [
     {
       "id": 1,
-      "firstName": "reuven",
+      "firstName": "Reuven",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
       "address": {
@@ -35,7 +35,7 @@
     },
     {
       "id": 2,
-      "firstName": "shimon",
+      "firstName": "Shimon",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
       "address": {
@@ -61,7 +61,7 @@
     },
     {
       "id": 3,
-      "firstName": "levy",
+      "firstName": "Levy",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
       "address": {
