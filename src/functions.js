@@ -76,7 +76,8 @@ const getUsersForManager = () => {
 
       users.forEach((user) => {
         bmi = (user.Wheights.meetings[1].wheight/(user.height* user.height));
-        if (bmi < 50) color = "green";
+        lastBmi = (user.Wheights.meetings[0].wheight/(user.height* user.height));
+        if (bmi <= lastBmi) color = "green";
         else color = "red";
         table += `
       <tr>
