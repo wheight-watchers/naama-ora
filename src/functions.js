@@ -82,35 +82,9 @@ const getUsersForManager = () => {
         document.getElementById("allUsers").appendChild(para);
         document.getElementById("allUsers").innerHTML += (user.Wheights.startWheight / (user.height * user.height))
         document.getElementById("allUsers").innerHTML +=`<button onclick="directMyDetails({user})"> details</button>`
-      //   table += `
-      // <tr>
-      // <th>${user.firstName + " " + user.lastName}</th><br/>
-      // <th class=${color}>${"CURRENT BMI : " + bmi}</th><br/>
-      // <th>${"you started with BMI  : " + (user.Wheights.startWheight / (user.height * user.height))}</th>
-      // </tr>
-      // <button onclick="directMyDetails(${user})">details</button>
-      // <br/>`
+   
       });
-      // const container = document.querySelector(".usersTable");
-      // container.innerHTML += table;
-
-
-
-      //   const bmi = (user.Weights.startWeight * user.height ^ 2)
-
-      //   const para = document.createElement("p");
-      //   if (bmi < 50) {
-      //     color = green;
-
-      //     para.style.color="green"
-      //   }
-      //   else para.style.color="red"
-      //   document.getElementById("allUsers").innerHTML +=`<h3>${user.firstName + " " + user.lastName}</h3>`
-      //  para.innerHTML = "BMI : " + bmi;       
-      //  document.getElementById("allUsers").appendChild(para);
-      //  document.getElementById("allUsers").innerHTML +=`<button onclick="directMyDetails({user})"> details</button>`
-
-      //   document.getElementById("allUsers").innerHTML +=`</br>`
+    
 
     }
   };
