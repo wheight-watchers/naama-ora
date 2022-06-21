@@ -114,7 +114,7 @@ function userDetails() {
     document.getElementById("meeting").innerHTML+= '     date:         '+  m.date
     document.getElementById("meeting").innerHTML+= "                          "
     document.getElementById("meeting").innerHTML+='      weight:        '+m.weight
-    document.getElementById("meeting").innerHTML+= "                          "
+    document.getElementById("meeting").innerHTML+=`</br>`
 
   })
 //  JSON.parse(myData).meetings.forEach(x=> document.getElementById("meeting").innerHTML+=x.weighs.meetings.date)
