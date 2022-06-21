@@ -105,8 +105,8 @@ function userDetails() {
   var value7 = JSON.parse(myData).address.building
   var value8 = JSON.parse(myData).age
   var value9= JSON.parse(myData).height
-  var value10=JSON.parse(myData).Weights.startWheight
-  var meet=JSON.parse(myData).Weights.meetings
+  var value10=JSON.parse(myData).Wheights.startWheight
+  var meet=JSON.parse(myData).Wheights.meetings
   console.log(meet)
   meet.forEach(m=>{
     document.getElementById("meeting").innerHTML+= "                          "
@@ -121,7 +121,8 @@ function userDetails() {
   document.getElementById("user").innerHTML+=value1
   document.getElementById("name").innerHTML=value1+' '+value2
   document.getElementById("email").innerHTML =value3
-  document.getElementById("height&age").innerHTML=value8+' '+value9
+  document.getElementById("height").innerHTML=value9
+  document.getElementById("age").innerHTML=value8
   document.getElementById("address").innerHTML=value6+' '+value7+' '+value5;
   document.getElementById("StartingWeight").innerHTML=value10
 }
