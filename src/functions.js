@@ -1,6 +1,6 @@
 let CurrentUser;
 const logIn = () => {
-  debugger;
+
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "./db-1655750686617.json");
   xhr.send();
@@ -21,8 +21,6 @@ const logIn = () => {
         console.log(users);
         CurrentUser = users.find((u) => u.email == mail);
         if (CurrentUser != null) {
-          debugger;
-          console.log(CurrentUser);
           localStorage.setItem("cu", JSON.stringify(CurrentUser));
           window.location.href = "src/User.html";
         }
@@ -30,31 +28,42 @@ const logIn = () => {
     }
   };
 };
-function directMyDetails(user) {
-  debugger;
-  const nameContainer = document.querySelector(".userName");
-  nameContainer.innerHTML += user.firstName + " " + user.lastName;
-  const detailsContainer = document.querySelector(".userDetails");
-  detailsContainer.innerHTML += `
-  <p>${"id: " + user.id}</p>
-  <p> ${"mail: " + user.email}</p>
-  <p>${"address: " +
-    user.address.city +
-    " " +
-    user.address.street +
-    " " +
-    user.address.building
-    }</p>
-  <p>${"start wheight: " + user.wheights.startWheight}</p>
-  <p> wheights per meetings: </p>+`;
-  const wheighs = user.wheights.meetings;
-  wheighs.foreach((wheight) => {
-    detailsContainer.innerHTML += `<p>${user.wheights.meetings.date + " : " + user.wheights.meetings.wheight
-      }</p>`;
-  });
 
-  window.location.assign("src/Details.html");
+function getParams() {
+  debugger
+  const params = new URLSearchParams(window.location.search)
+  const id = params.get('id')
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "../db-1655750686617.json");
+  xhr.send();
+  xhr.onload = () => {
+    let users = JSON.parse(xhr.responseText).users;
+    CurrentUser = users.find((u) => u.id == id);
+    document.getElementById("userDetail").innerHTML += `<h1>${CurrentUser.firstName} details</h1>`
+    document.getElementById("userDetail").innerHTML += `<h4>firstName</h4>` + CurrentUser.firstName
+    document.getElementById("userDetail").innerHTML += `<h4>lastName</h4>` + CurrentUser.lastName + `</br>`
+    document.getElementById("userDetail").innerHTML += `<h4>email</h4>` + CurrentUser.email + `</br>`
+    document.getElementById("userDetail").innerHTML += `<h4>address : </h4>`
+    document.getElementById("userDetail").innerHTML += CurrentUser.address.street + " "
+    document.getElementById("userDetail").innerHTML += CurrentUser.address.building + " "
+    document.getElementById("userDetail").innerHTML += CurrentUser.address.city + `</br>`
+    document.getElementById("userDetail").innerHTML += `<h4>age</h4>` + CurrentUser.age + `</br>`
+    document.getElementById("userDetail").innerHTML += `<h4>height</h4>` + CurrentUser.height + `</br>`
+    document.getElementById("userDetail").innerHTML += `<h4>start Weight</h4>` + CurrentUser.Wheights.startWheight + `</br>`
+    document.getElementById("userDetail").innerHTML += `<h2>meeting</h2>`
+    const meet = CurrentUser.Wheights.meetings
+    meet.forEach(m => {
+      document.getElementById("userDetail").innerHTML += "                          "
+
+      document.getElementById("userDetail").innerHTML += `<h4>date</h4>` + m.date
+      document.getElementById("userDetail").innerHTML += `</br>`
+      document.getElementById("userDetail").innerHTML += `<h4> weight</h4>` + m.wheight
+      document.getElementById("userDetail").innerHTML += `</br>`
+
+    })
+  }
 }
+
 const getUsersForManager = () => {
   debugger;
   const xhr = new XMLHttpRequest();
@@ -63,38 +72,47 @@ const getUsersForManager = () => {
   xhr.onload = () => {
     if (xhr.status != 200) {
       alert("Error ${xhr.status}: ${xhr.statusText}");
-    } else {
+    } 
+    else {
       let users = JSON.parse(xhr.responseText).users;
       console.log(users);
-      let table = "";
-      // const currentUser=localStorage.getItem("cu")
-      let bmi;
-      // = (currentUser.Wheighs.meetings[1].wheight/(currentUser.height* currentUser.height);
-      let color;
-
-      
-users.forEach((user) => {
+      var i=0
+      users.forEach((user) => {
+        debugger;
         const bmi = (user.Wheights.meetings[1].wheight / (user.height * user.height));
         const para = document.createElement("p");
+        const buttons = document.createElement('button')
+        buttons.innerText = "details"
+        buttons.id = "b"+i
+        i=i+1
         if (bmi < 50) para.style.color = "green";
         else para.style.color = "red";
         document.getElementById("allUsers").innerHTML += `<h3>${user.firstName + " " + user.lastName}</h3>`
         para.innerHTML = "CURRENT BMI : " + bmi;
-        document.getElementById("allUsers").appendChild(para);
-        document.getElementById("allUsers").innerHTML +="START BMI : " +(user.Wheights.startWheight / (user.height * user.height))+`</br>`
-        document.getElementById("allUsers").innerHTML +=`<button onclick="directMyDetails(${user})"> details</button>`
-   
-      } );
-    
+        document.getElementById("allUsers").appendChild(para)
+        document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Wheights.startWheight / (user.height * user.height)) + `</br>`
+        document.getElementById("allUsers").appendChild(buttons)
+      }
 
+
+      );
+      i=0
+users.forEach((user)=>{
+  debugger;
+  var elem = document.getElementById("b"+i);
+  i=i+1
+  elem.addEventListener("click", function () { directMyDetails(user); }, false);
+})
     }
   };
 };
+
+
+
 function userDetails() {
   debugger;
   var myData = localStorage['cu'];
   localStorage.clear();
-
   var value1 = JSON.parse(myData).firstName
   var value2 = JSON.parse(myData).lastName
   var value3 = JSON.parse(myData).email
@@ -115,7 +133,7 @@ function userDetails() {
     document.getElementById("meeting").innerHTML += `</br>`
 
   })
-  //  JSON.parse(myData).meetings.forEach(x=> document.getElementById("meeting").innerHTML+=x.weighs.meetings.date)
+
   document.getElementById("user").innerHTML += value1
   document.getElementById("name").innerHTML = value1 + ' ' + value2
   document.getElementById("email").innerHTML = value3
@@ -123,4 +141,12 @@ function userDetails() {
   document.getElementById("age").innerHTML = value8
   document.getElementById("address").innerHTML = value6 + ' ' + value7 + ' ' + value5;
   document.getElementById("StartingWeight").innerHTML = value10
+}
+function directMyDetails(user) {
+
+  debugger;
+  window.location.href = `Details.html?id=${user.id}`
+
+
+
 }
