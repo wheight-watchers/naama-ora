@@ -129,7 +129,7 @@ function userDetails() {
 
     document.getElementById("meeting").innerHTML += '     date:         ' + m.date
     document.getElementById("meeting").innerHTML += "                          "
-    document.getElementById("meeting").innerHTML += '      weight:        ' + m.weight
+    document.getElementById("meeting").innerHTML += '      weight:        ' + m.wheight
     document.getElementById("meeting").innerHTML += `</br>`
 
   })
