@@ -105,7 +105,7 @@ function userDetails() {
   var value7 = JSON.parse(myData).address.building
   var value8 = JSON.parse(myData).age
   var value9= JSON.parse(myData).height
-  var value10=JSON.parse(myData).Weights.startWeight
+  var value10=JSON.parse(myData).Weights.startWheight
   var meet=JSON.parse(myData).Weights.meetings
   console.log(meet)
   meet.forEach(m=>{
