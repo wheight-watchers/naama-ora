@@ -30,8 +30,8 @@ const logIn = () => {
     }
   };
 };
-
 function directMyDetails(user) {
+  debugger;
   const nameContainer = document.querySelector(".userName");
   nameContainer.innerHTML += user.firstName + " " + user.lastName;
   const detailsContainer = document.querySelector(".userDetails");
