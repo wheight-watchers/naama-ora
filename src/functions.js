@@ -38,21 +38,19 @@ function directMyDetails(user) {
   detailsContainer.innerHTML += `
   <p>${"id: " + user.id}</p>
   <p> ${"mail: " + user.email}</p>
-  <p>${
-    "address: " +
+  <p>${"address: " +
     user.address.city +
     " " +
     user.address.street +
     " " +
     user.address.building
-  }</p>
+    }</p>
   <p>${"start wheight: " + user.wheights.startWheight}</p>
   <p> wheights per meetings: </p>+`;
   const wheighs = user.wheights.meetings;
   wheighs.foreach((wheight) => {
-    detailsContainer.innerHTML += `<p>${
-      user.wheights.meetings.date + " : " + user.wheights.meetings.wheight
-    }</p>`;
+    detailsContainer.innerHTML += `<p>${user.wheights.meetings.date + " : " + user.wheights.meetings.wheight
+      }</p>`;
   });
 
   window.location.assign("src/Details.html");
@@ -74,22 +72,21 @@ const getUsersForManager = () => {
       // = (currentUser.Wheighs.meetings[1].wheight/(currentUser.height* currentUser.height);
       let color;
 
-      users.forEach((user) => {
-        bmi = (user.Wheights.meetings[1].wheight/(user.height* user.height));
-        lastBmi = (user.Wheights.meetings[0].wheight/(user.height* user.height));
-        if (bmi <= lastBmi) color = "green";
-        else color = "red";
-        table += `
-      <tr>
-      <th>${user.firstName + " " + user.lastName}</th><br/>
-      <th class=${color}>${"CURRENT BMI : " + bmi}</th><br/>
-      <th>${"you started with BMI  : " +(user.Wheights.startWheight/(user.height* user.height))}</th>
-      </tr>
-      <button onclick="directMyDetails(${user})">details</button>
-      <br/>`
-      });
-      const container = document.querySelector(".usersTable");
-      container.innerHTML += table;
+      
+users.forEach((user) => {
+        const bmi = (user.Wheights.meetings[1].wheight / (user.height * user.height));
+        const para = document.createElement("p");
+        if (bmi < 50) para.style.color = "green";
+        else para.style.color = "red";
+        document.getElementById("allUsers").innerHTML += `<h3>${user.firstName + " " + user.lastName}</h3>`
+        para.innerHTML = "CURRENT BMI : " + bmi;
+        document.getElementById("allUsers").appendChild(para);
+        document.getElementById("allUsers").innerHTML += (user.Wheights.startWheight / (user.height * user.height))
+        document.getElementById("allUsers").innerHTML +=`<button onclick="directMyDetails({user})"> details</button>`
+   
+      } );
+    
+
     }
   };
 };
@@ -105,25 +102,25 @@ function userDetails() {
   var value6 = JSON.parse(myData).address.street
   var value7 = JSON.parse(myData).address.building
   var value8 = JSON.parse(myData).age
-  var value9= JSON.parse(myData).height
-  var value10=JSON.parse(myData).Wheights.startWheight
-  var meet=JSON.parse(myData).Wheights.meetings
+  var value9 = JSON.parse(myData).height
+  var value10 = JSON.parse(myData).Wheights.startWheight
+  var meet = JSON.parse(myData).Wheights.meetings
   console.log(meet)
-  meet.forEach(m=>{
-    document.getElementById("meeting").innerHTML+= "                          "
+  meet.forEach(m => {
+    document.getElementById("meeting").innerHTML += "                          "
 
-    document.getElementById("meeting").innerHTML+= '     date:         '+  m.date
-    document.getElementById("meeting").innerHTML+= "                          "
-    document.getElementById("meeting").innerHTML+='      weight:        '+m.weight
-    document.getElementById("meeting").innerHTML+=`</br>`
+    document.getElementById("meeting").innerHTML += '     date:         ' + m.date
+    document.getElementById("meeting").innerHTML += "                          "
+    document.getElementById("meeting").innerHTML += '      weight:        ' + m.weight
+    document.getElementById("meeting").innerHTML += `</br>`
 
   })
-//  JSON.parse(myData).meetings.forEach(x=> document.getElementById("meeting").innerHTML+=x.weighs.meetings.date)
-  document.getElementById("user").innerHTML+=value1
-  document.getElementById("name").innerHTML=value1+' '+value2
-  document.getElementById("email").innerHTML =value3
-  document.getElementById("height").innerHTML=value9
-  document.getElementById("age").innerHTML=value8
-  document.getElementById("address").innerHTML=value6+' '+value7+' '+value5;
-  document.getElementById("StartingWeight").innerHTML=value10
+  //  JSON.parse(myData).meetings.forEach(x=> document.getElementById("meeting").innerHTML+=x.weighs.meetings.date)
+  document.getElementById("user").innerHTML += value1
+  document.getElementById("name").innerHTML = value1 + ' ' + value2
+  document.getElementById("email").innerHTML = value3
+  document.getElementById("height").innerHTML = value9
+  document.getElementById("age").innerHTML = value8
+  document.getElementById("address").innerHTML = value6 + ' ' + value7 + ' ' + value5;
+  document.getElementById("StartingWeight").innerHTML = value10
 }
