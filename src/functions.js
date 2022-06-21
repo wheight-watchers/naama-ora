@@ -72,7 +72,8 @@ const getUsersForManager = () => {
       // = (currentUser.Wheighs.meetings[1].wheight/(currentUser.height* currentUser.height);
       let color;
 
-      users.forEach((user) => {
+      
+users.forEach((user) => {
         const bmi = (user.Wheights.meetings[1].wheight / (user.height * user.height));
         const para = document.createElement("p");
         if (bmi < 50) para.style.color = "green";
@@ -83,7 +84,7 @@ const getUsersForManager = () => {
         document.getElementById("allUsers").innerHTML += (user.Wheights.startWheight / (user.height * user.height))
         document.getElementById("allUsers").innerHTML +=`<button onclick="directMyDetails({user})"> details</button>`
    
-      });
+      } );
     
 
     }
