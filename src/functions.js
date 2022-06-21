@@ -81,8 +81,8 @@ users.forEach((user) => {
         document.getElementById("allUsers").innerHTML += `<h3>${user.firstName + " " + user.lastName}</h3>`
         para.innerHTML = "CURRENT BMI : " + bmi;
         document.getElementById("allUsers").appendChild(para);
-        document.getElementById("allUsers").innerHTML += (user.Wheights.startWheight / (user.height * user.height))
-        document.getElementById("allUsers").innerHTML +=`<button onclick="directMyDetails({user})"> details</button>`
+        document.getElementById("allUsers").innerHTML +="START BMI : " +(user.Wheights.startWheight / (user.height * user.height))+`</br>`
+        document.getElementById("allUsers").innerHTML +=`<button onclick="directMyDetails(${user})"> details</button>`
    
       } );
     
