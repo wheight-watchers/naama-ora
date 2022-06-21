@@ -43,17 +43,18 @@ function directMyDetails(user){
   window.location.assign("src/Details.html") 
 }
 const getUsersForManager = () => {
+  debugger;
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "./db-1655750686617.json");
+  xhr.open("GET", "../db-1655750686617.json");
   xhr.send();
   xhr.onload = () => {
     if (xhr.status != 200) {
       alert("Error ${xhr.status}: ${xhr.statusText}");
     } else {
-      users = JSON.parse(XHR.responseText).users;
+      users = JSON.parse(xhr.responseText).users;
       console.log(users);
       let tablle = "";
-      const bmi=(user.wheight*uer.height)^2
+      const bmi=(user.wheight*user.height)^2
       let color;
       if(bmi<50)
         color=green;
