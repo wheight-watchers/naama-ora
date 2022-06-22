@@ -39,40 +39,35 @@ function getParams() {
     let users = JSON.parse(xhr.responseText).users;
     CurrentUser = users.find((u) => u.id == id);
     document.getElementById(
-      "userDetail"
+      "userDetails"
     ).innerHTML += `<h1>${CurrentUser.firstName} details</h1>`;
-    document.getElementById("userDetail").innerHTML +=
-      `<h4>firstName</h4>` + CurrentUser.firstName;
-    document.getElementById("userDetail").innerHTML +=
-      `<h4>lastName</h4>` + CurrentUser.lastName + `</br>`;
-    document.getElementById("userDetail").innerHTML +=
-      `<h4>email</h4>` + CurrentUser.email + `</br>`;
-    document.getElementById("userDetail").innerHTML += `<h4>address : </h4>`;
-    document.getElementById("userDetail").innerHTML +=
-      CurrentUser.address.street + " ";
-    document.getElementById("userDetail").innerHTML +=
-      CurrentUser.address.building + " ";
-    document.getElementById("userDetail").innerHTML +=
-      CurrentUser.address.city + `</br>`;
-    document.getElementById("userDetail").innerHTML +=
-      `<h4>age</h4>` + CurrentUser.age + `</br>`;
-    document.getElementById("userDetail").innerHTML +=
-      `<h4>height</h4>` + CurrentUser.height + `</br>`;
-    document.getElementById("userDetail").innerHTML +=
-      `<h4>start Weight</h4>` + CurrentUser.Wheights.startWheight + `</br>`;
-    document.getElementById("userDetail").innerHTML += `<h2>meeting</h2>`;
+    document.getElementById("userDetails").innerHTML +=
+      `<h4>firstName: ${CurrentUser.firstName}</h4> 
+      <h4>lastName: ${CurrentUser.lastName}</h4>
+      <h4>email: ${CurrentUser.email}</h4>
+    <h4>address : </h4>
+      ${CurrentUser.address.street}
+      ${CurrentUser.address.building}
+      ${CurrentUser.address.city}
+      <h4>age: ${CurrentUser.age}</h4> 
+      <h4>height: ${CurrentUser.height}</h4>
+      <h4>start Weight: ${CurrentUser.Wheights.startWheight }</h4> 
+    <h2>meetings:</h2>`
     const meet = CurrentUser.Wheights.meetings;
+    let table=`<table>
+    <tr>
+    <th>Date</th>
+    <th>Weight</th>
+    </tr></br>`;
     meet.forEach((m) => {
-      document.getElementById("userDetail").innerHTML +=
-        "                          ";
-
-      document.getElementById("userDetail").innerHTML +=
-        `<h4>date</h4>` + m.date;
-      document.getElementById("userDetail").innerHTML += `</br>`;
-      document.getElementById("userDetail").innerHTML +=
-        `<h4> weight</h4>` + m.wheight;
-      document.getElementById("userDetail").innerHTML += `</br>`;
+      table+=
+      `<tr>
+         <td>${m.date}</td>
+        <td>${m.wheight}</td>
+        </tr></br>`
     });
+    table+=`</table>`
+    document.getElementById("userDetails").innerHTML +=table;
   };
 }
 
@@ -86,14 +81,14 @@ const getUsersForManager = () => {
       alert("Error ${xhr.status}: ${xhr.statusText}");
     } else {
       let users = JSON.parse(xhr.responseText).users;
+      let userMeetings=JSON.parse(xhr.responseText).users[0].Wheights.meetings;
       console.log(users);
       let i = 0;
       let bmi;
       users.forEach((user) => {
         debugger;
-        bmi = user.Wheights.meetings[1].wheight / (user.height * user.height);
-        lastBmi =
-          user.Wheights.meetings[0].wheight / (user.height * user.height);
+        bmi = user.Wheights.meetings[Object.keys(userMeetings).length-1].wheight / (user.height * user.height);
+        lastBmi =user.Wheights.meetings[Object.keys(userMeetings).length-2].wheight / (user.height * user.height);
         const para = document.createElement("p");
         const buttons = document.createElement("button");
         buttons.innerText = "details";
