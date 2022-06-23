@@ -119,7 +119,9 @@ function showUsers(jsonusers, numOfmeetings) {
   // container.id="container"
   let i = 0;
   let bmi;
-  jsonusers.forEach((user) => {
+  if (jsonusers==[])
+  document.getElementById("allUsers").innerHTML +='no suitable users found'
+  jsonusers?.forEach((user) => {
     debugger;
     bmi =
       user.Wheights.meetings[numOfmeetings - 1].wheight /
@@ -147,7 +149,7 @@ function showUsers(jsonusers, numOfmeetings) {
     // container.appendChild(buttons);
   });
   i = 0;
-  jsonusers.forEach((user) => {
+  jsonusers?.forEach((user) => {
     debugger;
     var elem = document.getElementById("b" + i);
     i = i + 1;
@@ -205,6 +207,8 @@ function directMyDetails(user) {
 function filterUsers() {
   debugger;
   const text = document.getElementById("searchByFreeTextInput").value;
+  const biggerThanWeight=document.getElementById("biggerThanWeight").value;
+  const lowerThanWeight=document.getElementById("lowerThanWeight").value;
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "../db-1655750686617.json");
   xhr.send();
@@ -214,26 +218,50 @@ function filterUsers() {
     } else {
       // alert(JSON.parse(xhr.responseText));
       let users = JSON.parse(xhr.responseText).users;
-      let filteredUsers = users.filter((u) => {
-        return (
-          u.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-          u.lastName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-          u.address.street.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-          u.address.city.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-          u.email.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-          u.id.toString().indexOf(text) > -1 ||
-          u.age.toString().indexOf(text) > -1 ||
-          u.height.toString().indexOf(text) > -1
-        );
-      });
-      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights
-        .meetings;
+      let text_filteredUsers=[]
+      let Weight_filteredUsers=[]
+      if(text!=""){
+        text_filteredUsers = users.filter((u) => {
+          return (
+            u.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+            u.lastName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+            u.address.street.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+            u.address.city.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+            u.email.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+            u.id.toString().indexOf(text) > -1 ||
+            u.age.toString().indexOf(text) > -1 ||
+            u.height.toString().indexOf(text) > -1
+          );
+        });
+      }
+     if(biggerThanWeight!=null||lowerThanWeight!=null){
+      if(biggerThanWeight==null)
+        biggerThanWeight=0;
+      if(lowerThanWeight==null)
+        lowerThanWeight=200;
+      if(text_filteredUsers.length === 0){
+        Weight_filteredUsers=users.filter((u)=>{
+          return(
+            u.Wheights.meetings[numOfmeetings-1].wheight>biggerThanWeight&&u.Wheights.meetings[numOfmeetings-1].wheight<lowerThanWeight
+          );
+        });
+      }
+      else{
+        Weight_filteredUsers=text_filteredUsers.filter((u)=>{
+          return(
+            u.Wheights.meetings[numOfmeetings-1].wheight>biggerThanWeight&&u.Wheights.meetings[numOfmeetings-1].wheight<lowerThanWeight
+          );
+        });
+      }  
+     }
+     
+      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights.meetings;
       numOfmeetings = Object.keys(userMeetings).length;
       document.getElementById("allUsers").innerHTML = "";
       // document
       //   .getElementById("allUsers")
       //   .append(
-          showUsers(filteredUsers, numOfmeetings)
+          showUsers(Weight_filteredUsers, numOfmeetings)
           // );
     }
   };
