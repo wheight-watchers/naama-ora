@@ -68,6 +68,7 @@ function getParams() {
     });
     table += `</table>`;
     document.getElementById("userDetails").innerHTML += table;
+
   };
 }
 
@@ -128,6 +129,8 @@ const getUsersForManager = () => {
         const buttons = document.createElement("button");
         buttons.innerText = "details";
         buttons.id = "b" + i;
+        buttons.className="btn btn-outline-info"
+        
         i = i + 1;
         if (bmi < lastBmi) para.style.color = "green";
         else para.style.color = "red";

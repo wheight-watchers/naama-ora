@@ -18,3 +18,18 @@
   background-color: orangered;
   color: white;
 }
+
+#managerTitle{
+    color: blueviolet;
+}
+#pasandemail{
+    text-align: center;
+    /* justify-content: center; */
+}
+#userDetails{
+    text-align: center;
+    justify-content: center
+}
+td, tr{
+    text-align: center;
+}
