@@ -16,23 +16,27 @@
             <label>search by any detail </label><input type="text" placeholder="🔎SEARCH..."
                 id="searchByFreeTextInput"><br>
             <label>search by weight</label><br>
-            <label>bigger than...</label><input type="number" id="biggerThanWeight">
-            <label>lower than...</label><input type="number" id="lowerThanWeight"><br>
+            <label>bigger than...</label><input type="number" id="biggerThanWeight" min="0" max="200">
+            <label>lower than...</label><input type="number" id="lowerThanWeight" min="0" max="200"><br>
             <label>search by process trend:</label><br>
-            <select>
-                <option value="lost weight">lost weight</option>
-                <option value="gained weight">gained weight</option>
+            <select id="select_lost/gained">
+                <option value="lost/gained">lost/gained</option>
+                <option value="lost_weight">lost weight</option>
+                <option value="gained_weight">gained weight</option>
             </select>
-            <select>
-                <option value="from the beginning">from the beginning</option>
-                <option value="from the last week">from the last week</option>
+            <select id="select_from">
+                <option value="from">from</option>
+                <option value="from_the_beginning">from the beginning</option>
+                <option value="from_the_last_week">from the last week</option>
             </select><br>
-            <label>search by BMI</label><br>
-            <label>bigger than...</label><input type="number" id="biggerThanBMI">
-            <label>lower than...</label><input type="number" id="lowerThanBMI"><br>
-            <label>search by Address</label><br>
-            <label>city</label><select id="citySelect"></select>
-            <label>street</label></label><select id="streetSelect"></select><br>
+            <label>search by BMI:</label><br>
+            <label>bigger than...</label><input type="number" id="biggerThanBMI" min="0" max="200">
+            <label>lower than...</label><input type="number" id="lowerThanBMI" min="0" max="200"><br>
+            <label>search by Address:</label><br>
+            <!-- <label>city</label> -->
+            <select id="citySelect"></select>
+            <!-- <label>street</label> -->
+            </label><select id="streetSelect"></select><br>
             <button type="submit" id="submitFilter">SEARCH</button>
         </form>
         <p class="usersTable"></p>

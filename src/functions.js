@@ -40,7 +40,7 @@ function getParams() {
     <th>Date  </th>
     <th>Weight  </th>
     </tr></br>`;
-    table.id="userMeetingsTable";
+    table.id = "userMeetingsTable";
     meet.forEach((m) => {
       table += `<tr>
          <td>${m.date + "   "}</td>
@@ -88,11 +88,13 @@ const getUsersForManager = () => {
         });
         const city = document.getElementById("citySelect");
         const street = document.getElementById("streetSelect");
-        let index = 0;
+        let index = 1;
+        city.options[0] = new Option("city",0);
+        street.options[0] = new Option("street",0);
         cities.forEach((c, i) => {
           debugger;
           // alert(`${i} -> ${c}`);
-          city.options[i] = new Option(c, i);
+          city.options[i+1] = new Option(c, i+1);
           jsonusers.forEach((j, ind) => {
             debugger;
             if (j.address.city == c) {
@@ -107,8 +109,8 @@ const getUsersForManager = () => {
         // document
         //   .getElementById("allUsers")
         //   .append(
-            showUsers(jsonusers, numOfmeetings)
-            // );
+        showUsers(jsonusers, numOfmeetings);
+        // );
       }
     };
     start += 1;
@@ -119,8 +121,8 @@ function showUsers(jsonusers, numOfmeetings) {
   // container.id="container"
   let i = 0;
   let bmi;
-  if (jsonusers==[])
-  document.getElementById("allUsers").innerHTML +='no suitable users found'
+  if (jsonusers == [])
+    document.getElementById("allUsers").innerHTML += "no suitable users found";
   jsonusers?.forEach((user) => {
     debugger;
     bmi =
@@ -139,7 +141,9 @@ function showUsers(jsonusers, numOfmeetings) {
     i = i + 1;
     if (bmi < lastBmi) para.style.color = "green";
     else para.style.color = "red";
-    document.getElementById("allUsers").innerHTML += `<h3>${user.firstName + " " + user.lastName}`;
+    document.getElementById("allUsers").innerHTML += `<h3>${
+      user.firstName + " " + user.lastName
+    }`;
     // container.append(`${user.firstName + " " + user.lastName}`);
     para.innerHTML = "CURRENT BMI : " + bmi;
     document.getElementById("allUsers").appendChild(para);
@@ -206,9 +210,6 @@ function directMyDetails(user) {
 }
 function filterUsers() {
   debugger;
-  const text = document.getElementById("searchByFreeTextInput").value;
-  const biggerThanWeight=document.getElementById("biggerThanWeight").value;
-  const lowerThanWeight=document.getElementById("lowerThanWeight").value;
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "../db-1655750686617.json");
   xhr.send();
@@ -217,53 +218,132 @@ function filterUsers() {
       alert(`Error ${xhr.status}: ${xhr.statusText}`);
     } else {
       // alert(JSON.parse(xhr.responseText));
+      const text = document.getElementById("searchByFreeTextInput").value;
+      const biggerThanWeight =
+        document.getElementById("biggerThanWeight").value;
+      const lowerThanWeight = document.getElementById("lowerThanWeight").value;
+      const lostOrGained = document.getElementById("select_lost/gained").value;
+      const from = document.getElementById("select_from").value;
+      const lowerThanBMI = document.getElementById("lowerThanBMI").value;
+      const biggerThanBMI = document.getElementById("biggerThanBMI").value;
+      const streetSelect = document.getElementById("streetSelect").value;
+      const citySelect = document.getElementById("citySelect").value;
+
       let users = JSON.parse(xhr.responseText).users;
-      let text_filteredUsers=[]
-      let Weight_filteredUsers=[]
-      if(text!=""){
-        text_filteredUsers = users.filter((u) => {
-          return (
-            u.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-            u.lastName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-            u.address.street.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-            u.address.city.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-            u.email.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-            u.id.toString().indexOf(text) > -1 ||
-            u.age.toString().indexOf(text) > -1 ||
-            u.height.toString().indexOf(text) > -1
-          );
-        });
-      }
-     if(biggerThanWeight!=null||lowerThanWeight!=null){
-      if(biggerThanWeight==null)
-        biggerThanWeight=0;
-      if(lowerThanWeight==null)
-        lowerThanWeight=200;
-      if(text_filteredUsers.length === 0){
-        Weight_filteredUsers=users.filter((u)=>{
-          return(
-            u.Wheights.meetings[numOfmeetings-1].wheight>biggerThanWeight&&u.Wheights.meetings[numOfmeetings-1].wheight<lowerThanWeight
-          );
-        });
-      }
-      else{
-        Weight_filteredUsers=text_filteredUsers.filter((u)=>{
-          return(
-            u.Wheights.meetings[numOfmeetings-1].wheight>biggerThanWeight&&u.Wheights.meetings[numOfmeetings-1].wheight<lowerThanWeight
-          );
-        });
-      }  
-     }
-     
-      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights.meetings;
+      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights
+        .meetings;
       numOfmeetings = Object.keys(userMeetings).length;
+      if (text != "") {
+        users = filterByText(users, text);
+      }
+      if (biggerThanWeight != null || lowerThanWeight != null) {
+        if (biggerThanWeight == null) biggerThanWeight = 0;
+        if (lowerThanWeight == null) lowerThanWeight = 200;
+        users = filterByWeight(users, biggerThanWeight, lowerThanWeight);
+      }
+      if (lostOrGained != "lost/gained" && from != "from") {
+        users = filterByGainedOrLost(users, lostOrGained, from, numOfmeetings);
+      }
+      if (lowerThanBMI != null || biggerThanBMI != null) {
+        if (lowerThanBMI == null) lowerThanBMI = 200;
+        if (biggerThanBMI == null) biggerThanBMI = 0;
+        users = filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings);
+      }
+      if (streetSelect != "street" || citySelect != "city") {
+        users = filterByAddress(users, citySelect, streetSelect);
+      }
+
       document.getElementById("allUsers").innerHTML = "";
       // document
       //   .getElementById("allUsers")
       //   .append(
-          showUsers(Weight_filteredUsers, numOfmeetings)
-          // );
+      showUsers(users, numOfmeetings);
+      // );
     }
   };
+}
+function filterByText(users, text) {
+  users = users.filter((u) => {
+    return (
+      u.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+      u.lastName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+      u.address.street.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+      u.address.city.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+      u.email.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+      u.id.toString().indexOf(text) > -1 ||
+      u.age.toString().indexOf(text) > -1 ||
+      u.height.toString().indexOf(text) > -1
+    );
+  });
+  return users;
+}
+function filterByWeight(users, biggerThanWeight, lowerThanWeight) {
+  users = users.filter((u) => {
+    return (
+      u.Wheights.meetings[numOfmeetings - 1].wheight > biggerThanWeight &&
+      u.Wheights.meetings[numOfmeetings - 1].wheight < lowerThanWeight
+    );
+  });
+  return users;
+}
+function filterByGainedOrLost(users, lostOrGained, from, numOfmeetings) {
+  if (lostOrGained == "lost_weight") {
+    if (from == "from_the_last_week") {
+      users = users.filter((u) => {
+        return (
+          u.Wheights.meetings[numOfmeetings - 1].wheight <
+          u.Wheights.meetings[numOfmeetings - 2].wheight
+        );
+      });
+    } else {
+      users = users.filter((u) => {
+        return (
+          u.Wheights.meetings[numOfmeetings - 1].wheight <
+          u.Wheights.startWheight
+        );
+      });
+    }
+  } else {
+    if (from == "from_the_last_week") {
+      users = users.filter((u) => {
+        return (
+          u.Wheights.meetings[numOfmeetings - 1].wheight >
+          u.Wheights.meetings[numOfmeetings - 2].wheight
+        );
+      });
+    } else {
+      users = users.filter((u) => {
+        return (
+          u.Wheights.meetings[numOfmeetings - 1].wheight >
+          u.Wheights.startWheight
+        );
+      });
+    }
+  }
+  return users;
+}
+function filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings) {
+  let bmi;
+  users = users.filter((u) => {
+    bmi =
+      u.Wheights.meetings[numOfmeetings - 1].wheight / (u.height * u.height);
+    return bmi < lowerThanBMI && bmi > biggerThanBMI;
+  });
+  return users;
+}
+function filterByAddress(users, citySelect, streetSelect) {
+  users=users.filter((u)=>{
+    return(
+      u.address.city==citySelect
+    );
+  })
+  if(streetSelect!="street"){
+    users=users.filter((u)=>{
+      return(
+        u.address.street==streetSelect
+      );
+    })
+  }
+  return users;
 }
 // window.onload=getUsersForManager();
