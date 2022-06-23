@@ -1,33 +1,4 @@
-let CurrentUser;
-const logIn = () => {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "./db-1655750686617.json");
-  xhr.send();
-  xhr.onload = () => {
-    if (xhr.status != 200) {
-      alert(`Error ${xhr.status}: ${managerXHR.statusText}`);
-    } else {
-      let manager = JSON.parse(xhr.response).manager;
-      console.log(manager);
-      let mail = document.getElementById("mailInput").value;
-      let pswd = document.getElementById("passwordInput").value;
-      if (mail == manager.email && pswd == manager.password) {
-        if (window.confirm("welcome")) {
-          window.location.href = "src/Manager.html";
-        }
-      } else {
-        let users = JSON.parse(xhr.responseText).users;
-        console.log(users);
-        CurrentUser = users.find((u) => u.email == mail && u.id == pswd);
-        if (CurrentUser != null) {
-          localStorage.setItem("cu", JSON.stringify(CurrentUser));
-          window.location.href = "src/User.html";
-        }
-      }
-    }
-  };
-};
-
+let start = 0;
 function getParams() {
   debugger;
   const params = new URLSearchParams(window.location.search);
@@ -70,55 +41,64 @@ function getParams() {
     document.getElementById("userDetails").innerHTML += table;
   };
 }
-
 const getUsersForManager = () => {
-  debugger;
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../db-1655750686617.json");
-  xhr.send();
-  xhr.onload = () => {
-    if (xhr.status != 200) {
-      alert(`Error ${xhr.status}: ${xhr.statusText}`);
-    } else {
-      let jsonusers = JSON.parse(xhr.responseText).users;
-      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights
-        .meetings;
-      numOfmeetings = Object.keys(userMeetings).length;
-      console.log(jsonusers);
-      let cities = [];
-      let ind = 0;
-      jsonusers.forEach((u, i) => {
-        debugger;
-        let CITY = JSON.stringify(u.address.city).replace(/"/g, "");
-        // alert(`${i} -> ${CITY}`);
-        let found = cities.indexOf(CITY) > -1;
-        if (!found) {
-          cities[ind] = CITY;
-          ind += 1;
-        }
-      });
-      const city = document.getElementById("citySelect");
-      const street = document.getElementById("streetSelect");
-      let index = 0;
-      cities.forEach((c, i) => {
-        debugger;
-        // alert(`${i} -> ${c}`);
-        city.options[i] = new Option(c, i);
-        jsonusers.forEach((j, ind) => {
+  if (start == 0) {
+    debugger;
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "../db-1655750686617.json");
+    xhr.send();
+    xhr.onload = () => {
+      if (xhr.status != 200) {
+        alert(`Error ${xhr.status}: ${xhr.statusText}`);
+      } else {
+        let jsonusers = JSON.parse(xhr.responseText).users;
+        let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights
+          .meetings;
+        numOfmeetings = Object.keys(userMeetings).length;
+        console.log(jsonusers);
+        let cities = [];
+        let ind = 0;
+        jsonusers.forEach((u, i) => {
           debugger;
-          if (j.address.city == c) {
-            debugger;
-            let STREET = JSON.stringify(j.address.street).replace(/"/g, "");
-            street.options[index] = new Option(STREET, ind);
-            index += 1;
+          let CITY = JSON.stringify(u.address.city).replace(/"/g, "");
+          // alert(`${i} -> ${CITY}`);
+          let found = cities.indexOf(CITY) > -1;
+          if (!found) {
+            cities[ind] = CITY;
+            ind += 1;
           }
         });
-      });
-      showUsers(jsonusers, numOfmeetings);
-    }
-  };
+        const city = document.getElementById("citySelect");
+        const street = document.getElementById("streetSelect");
+        let index = 0;
+        cities.forEach((c, i) => {
+          debugger;
+          // alert(`${i} -> ${c}`);
+          city.options[i] = new Option(c, i);
+          jsonusers.forEach((j, ind) => {
+            debugger;
+            if (j.address.city == c) {
+              debugger;
+              let STREET = JSON.stringify(j.address.street).replace(/"/g, "");
+              street.options[index] = new Option(STREET, ind);
+              index += 1;
+            }
+          });
+        });
+        document.getElementById("allUsers").innerHTML = "";
+        // document
+        //   .getElementById("allUsers")
+        //   .append(
+            showUsers(jsonusers, numOfmeetings)
+            // );
+      }
+    };
+    start += 1;
+  }
 };
 function showUsers(jsonusers, numOfmeetings) {
+  // var container = document.createElement("div");
+  // container.id="container"
   let i = 0;
   let bmi;
   jsonusers.forEach((user) => {
@@ -139,13 +119,14 @@ function showUsers(jsonusers, numOfmeetings) {
     i = i + 1;
     if (bmi < lastBmi) para.style.color = "green";
     else para.style.color = "red";
-    document.getElementById("allUsers").innerHTML += `<h3>${
-      user.firstName + " " + user.lastName
-    }</h3>`;
+    document.getElementById("allUsers").innerHTML += `<h3>${user.firstName + " " + user.lastName}`;
+    // container.append(`${user.firstName + " " + user.lastName}`);
     para.innerHTML = "CURRENT BMI : " + bmi;
     document.getElementById("allUsers").appendChild(para);
     // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Wheights.startWheight / (user.height * user.height)) + `</br>`
     document.getElementById("allUsers").appendChild(buttons);
+    // container.appendChild(para);
+    // container.appendChild(buttons);
   });
   i = 0;
   jsonusers.forEach((user) => {
@@ -160,6 +141,9 @@ function showUsers(jsonusers, numOfmeetings) {
       false
     );
   });
+
+  start = 2;
+  // return container;
 }
 function userDetails() {
   debugger;
@@ -203,14 +187,13 @@ function filterUsers() {
   debugger;
   const text = document.getElementById("searchByFreeTextInput").value;
   const xhr = new XMLHttpRequest();
-  // xhr.open("GET", `../db-1655750686617.json/users?firstName=${text}`);
   xhr.open("GET", "../db-1655750686617.json");
   xhr.send();
-  xhr.onload = () => {
+  xhr.onloadend = () => {
     if (xhr.status != 200) {
       alert(`Error ${xhr.status}: ${xhr.statusText}`);
     } else {
-      // alert(JSON.parse(xhr.responseText))
+      // alert(JSON.parse(xhr.responseText));
       let users = JSON.parse(xhr.responseText).users;
       let filteredUsers = users.filter((u) => {
         return (
@@ -228,7 +211,12 @@ function filterUsers() {
         .meetings;
       numOfmeetings = Object.keys(userMeetings).length;
       document.getElementById("allUsers").innerHTML = "";
-      showUsers(filteredUsers, numOfmeetings);
+      // document
+      //   .getElementById("allUsers")
+      //   .append(
+          showUsers(filteredUsers, numOfmeetings)
+          // );
     }
   };
 }
+// window.onload=getUsersForManager();
