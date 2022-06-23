@@ -26,16 +26,34 @@ function getParams() {
       <h4>start Weight: ${CurrentUser.Wheights.startWheight}</h4> 
     <h2>meetings:</h2>`;
     const meet = CurrentUser.Wheights.meetings;
+    // let table=document.createElement("table")
+    // let title=document.createElement("tr");
+    // let subject1=document.createElement("td");
+    // subject1.innerText="Date";
+    // title.appendChild(subject1);
+    // let subject2=document.createElement("td");
+    // subject2.innerText="Weight"
+    // title.appendChild(subject2);
+    // table.append(title);
     let table = `<table>
     <tr>
     <th>Date  </th>
     <th>Weight  </th>
     </tr></br>`;
+    table.id="userMeetingsTable";
     meet.forEach((m) => {
       table += `<tr>
          <td>${m.date + "   "}</td>
         <td>${m.wheight}</td>
         </tr></br>`;
+      // let tr=document.createElement("tr");
+      // let td1=document.createElement("td");
+      // td1.innerText=m.date + "   ";
+      // tr.appendChild(td1);
+      // let td2=document.createElement("td");
+      // td2.innerText=m.wheight;
+      // tr.appendChild(td2);
+      // table.append(tr);
     });
     table += `</table>`;
     document.getElementById("userDetails").innerHTML += table;
@@ -161,6 +179,7 @@ function userDetails() {
   var meet = JSON.parse(myData).Wheights.meetings;
   console.log(meet);
   meet.forEach((m) => {
+    debugger;
     document.getElementById("meeting").innerHTML +=
       "     date:         " + m.date;
     document.getElementById("meeting").innerHTML +=
