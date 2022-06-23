@@ -10,8 +10,33 @@
 
 <body style="text-align: center;" onload="getUsersForManager()">
     <h1 id="managerTitle">HELLOW MANAGER</h1>
-    <p class="usersTable"></p>
-    <div id="allUsers"></div>
+    <div id="managerBody">
+        <form id="filter_form" onsubmit="filterUsers()">
+            <h2>FILTER</h2>
+            <label>search by any detail </label><input type="text" placeholder="🔎SEARCH..." id="searchByFreeTextInput"><br>
+            <label>search by weight</label><br>
+            <label>bigger than...</label><input type="number" id="biggerThanWeight">
+            <label>lower than...</label><input type="number" id="lowerThanWeight"><br>
+            <label>search by process trend:</label><br>
+            <select>
+                <option value="lost weight">lost weight</option>
+                <option value="gained weight">gained weight</option>
+            </select>
+            <select>
+                <option value="from the beginning">from the beginning</option>
+                <option value="from the last week">from the last week</option>
+            </select><br>
+            <label>search by BMI</label><br>
+            <label>bigger than...</label><input type="number" id="biggerThanBMI">
+            <label>lower than...</label><input type="number" id="lowerThanBMI"><br>
+            <label>search by Address</label><br>
+            <label>city</label><select id="citySelect"></select>
+            <label>street</label></label><select id="streetSelect"></select><br>
+            <button type="submit" id="submitFilter">SEARCH</button>
+        </form>
+        <p class="usersTable"></p>
+        <div id="allUsers"></div>
+    </div>
     <script src="functions.js"></script>
 </body>
 

@@ -1,9 +1,24 @@
-.red{
-color: red;
+/* #managerBody{
+} */
+.red {
+  color: orangered;
 }
-.green{
-    color: green;
+.green {
+  color: green;
 }
+#managerTitle {
+  color: orangered;
+}
+#filter_form {
+  border: 4px solid orangered;
+  margin: 3vw;
+}
+#submitFilter {
+  justify-content: center;
+  background-color: orangered;
+  color: white;
+}
+
 #managerTitle{
     color: blueviolet;
 }

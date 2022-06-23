@@ -18,7 +18,7 @@ const logIn = () => {
       } else {
         let users = JSON.parse(xhr.responseText).users;
         console.log(users);
-        CurrentUser = users.find((u) => u.email == mail);
+        CurrentUser = users.find((u) => u.email == mail&&u.id==pswd);
         if (CurrentUser != null) {
           localStorage.setItem("cu", JSON.stringify(CurrentUser));
           window.location.href = "src/User.html";
@@ -41,8 +41,9 @@ function getParams() {
     document.getElementById(
       "userDetails"
     ).innerHTML += `<h1>${CurrentUser.firstName} details</h1>`;
-    document.getElementById("userDetails").innerHTML +=
-      `<h4>firstName: ${CurrentUser.firstName}</h4> 
+    document.getElementById(
+      "userDetails"
+    ).innerHTML += `<h4>firstName: ${CurrentUser.firstName}</h4> 
       <h4>lastName: ${CurrentUser.lastName}</h4>
       <h4>email: ${CurrentUser.email}</h4>
     <h4>address : </h4>
@@ -51,24 +52,23 @@ function getParams() {
       ${CurrentUser.address.city}
       <h4>age: ${CurrentUser.age}</h4> 
       <h4>height: ${CurrentUser.height}</h4>
-      <h4>start Weight: ${CurrentUser.Wheights.startWheight }</h4> 
-    <h2>meetings:</h2>`
+      <h4>start Weight: ${CurrentUser.Wheights.startWheight}</h4> 
+    <h2>meetings:</h2>`;
     const meet = CurrentUser.Wheights.meetings;
-    let table=`<table>
+    let table = `<table>
     <tr>
-    <th>Date</th>
-    <th>Weight</th>
+    <th>Date  </th>
+    <th>Weight  </th>
     </tr></br>`;
     meet.forEach((m) => {
-      table+=
-      `<tr>
-         <td>${m.date}</td>
+      table += `<tr>
+         <td>${m.date + "   "}</td>
         <td>${m.wheight}</td>
-        </tr></br>`
+        </tr></br>`;
     });
-    
-    table+=`</table>`
-    document.getElementById("userDetails").innerHTML +=table;
+    table += `</table>`;
+    document.getElementById("userDetails").innerHTML += table;
+
   };
 }
 
@@ -79,17 +79,52 @@ const getUsersForManager = () => {
   xhr.send();
   xhr.onload = () => {
     if (xhr.status != 200) {
-      alert("Error ${xhr.status}: ${xhr.statusText}");
+      alert(`Error ${xhr.status}: ${xhr.statusText}`);
     } else {
-      let users = JSON.parse(xhr.responseText).users;
-      let userMeetings=JSON.parse(xhr.responseText).users[0].Wheights.meetings;
-      console.log(users);
+      let jsonusers = JSON.parse(xhr.responseText).users;
+      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights.meetings;
+      numOfmeetings=Object.keys(userMeetings).length;
+      console.log(jsonusers);
+      let cities = [];
+      let ind = 0;
+      jsonusers.forEach((u, i) => {
+        debugger;
+        let CITY = JSON.stringify(u.address.city).replace(/"/g, "");
+        // alert(`${i} -> ${CITY}`);
+        let found = (cities.indexOf(CITY)>-1)
+        if (!found) {
+          cities[ind] = CITY;
+          ind += 1;
+        }
+      });
+      const city = document.getElementById("citySelect");
+      const street = document.getElementById("streetSelect");
+      let index = 0;
+      cities.forEach((c, i) => {
+        debugger;
+        // alert(`${i} -> ${c}`);
+        city.options[i] = new Option(c, i);
+        jsonusers.forEach((j, ind) => {
+          debugger;
+          if (j.address.city == c) {
+            debugger;
+            let STREET = JSON.stringify(j.address.street).replace(/"/g, "");
+            street.options[index] = new Option(STREET, ind);
+            index += 1;
+          }
+        });
+      });
       let i = 0;
       let bmi;
-      users.forEach((user) => {
+      jsonusers.forEach((user) => {
         debugger;
-        bmi = user.Wheights.meetings[Object.keys(userMeetings).length-1].wheight / (user.height * user.height);
-        lastBmi =user.Wheights.meetings[Object.keys(userMeetings).length-2].wheight / (user.height * user.height);
+        bmi =
+          user.Wheights.meetings[numOfmeetings - 1].wheight /
+          (user.height * user.height);
+        lastBmi =
+          user.Wheights.meetings[numOfmeetings - 2].wheight /
+          (user.height * user.height);
+
         const para = document.createElement("p");
         const buttons = document.createElement("button");
         buttons.innerText = "details";
@@ -108,7 +143,7 @@ const getUsersForManager = () => {
         document.getElementById("allUsers").appendChild(buttons);
       });
       i = 0;
-      users.forEach((user) => {
+      jsonusers.forEach((user) => {
         debugger;
         var elem = document.getElementById("b" + i);
         i = i + 1;
@@ -127,7 +162,7 @@ const getUsersForManager = () => {
 function userDetails() {
   debugger;
   var myData = localStorage["cu"];
-  localStorage.clear();
+  // localStorage.clear();
   var value1 = JSON.parse(myData).firstName;
   var value2 = JSON.parse(myData).lastName;
   var value3 = JSON.parse(myData).email;
@@ -140,9 +175,6 @@ function userDetails() {
   var meet = JSON.parse(myData).Wheights.meetings;
   console.log(meet);
   meet.forEach((m) => {
-    document.getElementById("meeting").innerHTML +=
-      "                          ";
-
     document.getElementById("meeting").innerHTML +=
       "     date:         " + m.date;
     document.getElementById("meeting").innerHTML +=
@@ -164,4 +196,73 @@ function userDetails() {
 function directMyDetails(user) {
   debugger;
   window.location.href = `Details.html?id=${user.id}`;
+}
+function filterUsers(){
+  debugger;
+  const text=document.getElementById("searchByFreeTextInput").value;
+  const xhr = new XMLHttpRequest();
+  // xhr.open("GET", `../db-1655750686617.json/users?firstName=${text}`);
+  xhr.open("GET", '../db-1655750686617.json');
+  xhr.send();
+  xhr.onload = () => {
+    if (xhr.status != 200) {
+      alert(`Error ${xhr.status}: ${xhr.statusText}`);
+    } else {
+      // alert(JSON.parse(xhr.responseText)) 
+      let users = JSON.parse(xhr.responseText).users;
+      let filteredUsers=
+      users.filter((u) => {
+        return u.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1||
+               u.lastName.toLowerCase().indexOf(text.toLowerCase()) > -1||
+               u.address.street.toLowerCase().indexOf(text.toLowerCase()) > -1||
+               u.address.city.toLowerCase().indexOf(text.toLowerCase()) > -1||
+               u.email.toLowerCase().indexOf(text.toLowerCase()) > -1||
+               u.id.toLowerCase().indexOf(text.toLowerCase()) > -1||
+               u.age.toLowerCase().indexOf(text.toLowerCase()) > -1||
+               u.height.toLowerCase().indexOf(text.toLowerCase()) > -1;
+     })
+      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights.meetings;
+      numOfmeetings=Object.keys(userMeetings).length;
+      document.getElementById("allUsers").innerHTML="";
+      let i = 0;
+      let bmi;
+      filteredUsers.forEach((user) => {
+        debugger;
+        bmi =
+          user.Wheights.meetings[numOfmeetings - 1].wheight /
+          (user.height * user.height);
+        lastBmi =
+          user.Wheights.meetings[numOfmeetings - 2].wheight /
+          (user.height * user.height);
+
+        const para = document.createElement("p");
+        const buttons = document.createElement("button");
+        buttons.innerText = "details";
+        buttons.id = "b" + i;
+        i = i + 1;
+        if (bmi < lastBmi) para.style.color = "green";
+        else para.style.color = "red";
+        document.getElementById("allUsers").innerHTML += `<h3>${
+          user.firstName + " " + user.lastName
+        }</h3>`;
+        para.innerHTML = "CURRENT BMI : " + bmi;
+        document.getElementById("allUsers").appendChild(para);
+        // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Wheights.startWheight / (user.height * user.height)) + `</br>`
+        document.getElementById("allUsers").appendChild(buttons);
+      });
+      i = 0;
+      filteredUsers.forEach((user) => {
+        debugger;
+        var elem = document.getElementById("b" + i);
+        i = i + 1;
+        elem.addEventListener(
+          "click",
+          function () {
+            directMyDetails(user);
+          },
+          false
+        );
+      });
+    }
+  }
 }
