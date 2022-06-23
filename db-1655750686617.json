@@ -9,7 +9,7 @@
   "users": [
     {
       "id": 1,
-      "firstName": "Reuven",
+      "firstName": "Reuven Hashamen",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
       "address": {
@@ -20,15 +20,15 @@
       "height": 1.7,
       "age": 33,
       "Wheights": {
-        "startWheight": 60,
+        "startWheight": 121,
         "meetings": [
           {
             "date": "12/04/2020",
-            "wheight": 59
+            "wheight": 120
           },
           {
             "date": "18/04/2020",
-            "wheight": 62
+            "wheight": 117
           }
         ]
       }
@@ -46,15 +46,15 @@
       "height": 1.7,
       "age": 33,
       "Wheights": {
-        "startWheight": 60,
+        "startWheight": 77,
         "meetings": [
           {
             "date": "12/04/2020",
-            "wheight": 59
+            "wheight": 75
           },
           {
             "date": "18/04/2020",
-            "wheight": 62
+            "wheight": 75
           }
         ]
       }
@@ -98,15 +98,15 @@
       "height": 1.7,
       "age": 33,
       "Wheights": {
-        "startWheight": 60,
+        "startWheight": 85,
         "meetings": [
           {
             "date": "12/04/2020",
-            "wheight": 59
+            "wheight": 85
           },
           {
             "date": "18/04/2020",
-            "wheight": 62
+            "wheight": 83
           }
         ]
       }
