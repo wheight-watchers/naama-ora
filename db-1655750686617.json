@@ -13,8 +13,8 @@
       "lastName": "Cohen",
       "email": "rc@gmail.com",
       "address": {
-        "city": "Tel-aviv",
-        "street": "arlozerov",
+        "city": "Ramat-Gan",
+        "street": "bialic",
         "building": 5
       },
       "height": 1.7,
@@ -37,7 +37,7 @@
       "id": 2,
       "firstName": "Shimon",
       "lastName": "Cohen",
-      "email": "rc@gmail.com",
+      "email": "sc@gmail.com",
       "address": {
         "city": "Tel-aviv",
         "street": "arlozerov",
@@ -63,10 +63,10 @@
       "id": 3,
       "firstName": "Levy",
       "lastName": "Cohen",
-      "email": "rc@gmail.com",
+      "email": "lc@gmail.com",
       "address": {
         "city": "Tel-aviv",
-        "street": "arlozerov",
+        "street": "yafo",
         "building": 5
       },
       "height": 1.7,
@@ -89,10 +89,10 @@
       "id": 4,
       "firstName": "Yehuda",
       "lastName": "Cohen",
-      "email": "rc@gmail.com",
+      "email": "yc@gmail.com",
       "address": {
-        "city": "Tel-aviv",
-        "street": "arlozerov",
+        "city": "Ramat-Gan",
+        "street": "Harohe",
         "building": 5
       },
       "height": 1.7,
