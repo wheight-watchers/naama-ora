@@ -76,7 +76,7 @@ const getUsersForManager = () => {
         console.log(jsonusers);
         let cities = [];
         let ind = 0;
-        jsonusers.forEach((u, i) => {
+        jsonusers.forEach((u,i) => {
           debugger;
           let CITY = JSON.stringify(u.address.city).replace(/"/g, "");
           // alert(`${i} -> ${CITY}`);
@@ -100,7 +100,7 @@ const getUsersForManager = () => {
             if (j.address.city == c) {
               debugger;
               let STREET = JSON.stringify(j.address.street).replace(/"/g, "");
-              street.options[index] = new Option(STREET, ind);
+              street.options[index] = new Option(STREET, index);
               index += 1;
             }
           });
@@ -117,6 +117,7 @@ const getUsersForManager = () => {
   }
 };
 function showUsers(jsonusers, numOfmeetings) {
+  debugger;
   // var container = document.createElement("div");
   // container.id="container"
   let i = 0;
@@ -172,8 +173,7 @@ function showUsers(jsonusers, numOfmeetings) {
       false
     );
   });
-
-  start = 2;
+  start +=1;
   // return container;
 }
 function directMyDetails(user) {
@@ -198,9 +198,10 @@ function filterUsers() {
       const from = document.getElementById("select_from").value;
       const lowerThanBMI = document.getElementById("lowerThanBMI").value;
       const biggerThanBMI = document.getElementById("biggerThanBMI").value;
-      const streetSelect = document.getElementById("streetSelect").value;
-      const citySelect = document.getElementById("citySelect").value;
-
+      const s = document.getElementById("streetSelect")
+      const streetSelect=s.options[s.selectedIndex].outerText;
+      const  c= document.getElementById("citySelect")
+      const citySelect=c.options[c.selectedIndex].outerText;
       let users = JSON.parse(xhr.responseText).users;
       let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights
         .meetings;
@@ -208,17 +209,17 @@ function filterUsers() {
       if (text != "") {
         users = filterByText(users, text);
       }
-      if (biggerThanWeight != null || lowerThanWeight != null) {
-        if (biggerThanWeight == null) biggerThanWeight = 0;
-        if (lowerThanWeight == null) lowerThanWeight = 200;
+      if (biggerThanWeight != "" || lowerThanWeight != "") {
+        if (biggerThanWeight == "") biggerThanWeight = 0;
+        if (lowerThanWeight == "") lowerThanWeight = 200;
         users = filterByWeight(users, biggerThanWeight, lowerThanWeight);
       }
       if (lostOrGained != "lost/gained" && from != "from") {
         users = filterByGainedOrLost(users, lostOrGained, from, numOfmeetings);
       }
-      if (lowerThanBMI != null || biggerThanBMI != null) {
-        if (lowerThanBMI == null) lowerThanBMI = 200;
-        if (biggerThanBMI == null) biggerThanBMI = 0;
+      if (lowerThanBMI != "" || biggerThanBMI != "") {
+        if (lowerThanBMI == "") lowerThanBMI = 200;
+        if (biggerThanBMI == "") biggerThanBMI = 0;
         users = filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings);
       }
       if (streetSelect != "street" || citySelect != "city") {
