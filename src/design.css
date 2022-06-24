@@ -1,10 +1,10 @@
-/* #allUsers{
+#allUsers{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
    align-content: center;
-} */
+}
 .red {
   color: orangered;
 }

@@ -131,9 +131,13 @@ function showUsers(jsonusers, numOfmeetings) {
     lastBmi =
       user.Wheights.meetings[numOfmeetings - 2].wheight /
       (user.height * user.height);
-
+    var containerUser=document.createElement("div");
+    // containerUser.id="containerUser";
+    containerUser.innerHTML="";
     const para = document.createElement("p");
     const buttons = document.createElement("button");
+    const txt = document.createElement("txt");
+    txt.id="textForUser";
     buttons.innerText = "details";
     buttons.id = "b" + i;
     buttons.className = "btn btn-outline-info";
@@ -141,14 +145,17 @@ function showUsers(jsonusers, numOfmeetings) {
     i = i + 1;
     if (bmi < lastBmi) para.style.color = "green";
     else para.style.color = "red";
-    document.getElementById("allUsers").innerHTML += `<h3>${
-      user.firstName + " " + user.lastName
-    }`;
+    txt.innerHTML=`<h3>${
+      user.firstName + " " + user.lastName}</h3>`;
     // container.append(`${user.firstName + " " + user.lastName}`);
     para.innerHTML = "CURRENT BMI : " + bmi;
-    document.getElementById("allUsers").appendChild(para);
+    containerUser.appendChild(txt);
+    containerUser.appendChild(para);
     // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Wheights.startWheight / (user.height * user.height)) + `</br>`
-    document.getElementById("allUsers").appendChild(buttons);
+    // containerUser.appendChild(buttons);
+    containerUser.appendChild(buttons);
+    var allUsers=document.getElementById("allUsers");
+    allUsers.appendChild(containerUser);
     // container.appendChild(para);
     // container.appendChild(buttons);
   });
