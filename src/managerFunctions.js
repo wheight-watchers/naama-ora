@@ -59,7 +59,7 @@ function getParams() {
     document.getElementById("userDetails").innerHTML += table;
   };
 }
-const getUsersForManager = () => {
+function getUsersForManager () {
   if (start == 0) {
     debugger;
     const xhr = new XMLHttpRequest();
@@ -105,6 +105,7 @@ const getUsersForManager = () => {
             }
           });
         });
+        start += 1;
         document.getElementById("allUsers").innerHTML = "";
         // document
         //   .getElementById("allUsers")
@@ -113,7 +114,6 @@ const getUsersForManager = () => {
         // );
       }
     };
-    start += 1;
   }
 };
 function showUsers(jsonusers, numOfmeetings) {
@@ -153,12 +153,9 @@ function showUsers(jsonusers, numOfmeetings) {
     containerUser.appendChild(txt);
     containerUser.appendChild(para);
     // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Wheights.startWheight / (user.height * user.height)) + `</br>`
-    // containerUser.appendChild(buttons);
     containerUser.appendChild(buttons);
     var allUsers=document.getElementById("allUsers");
     allUsers.appendChild(containerUser);
-    // container.appendChild(para);
-    // container.appendChild(buttons);
   });
   i = 0;
   jsonusers?.forEach((user) => {
