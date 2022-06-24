@@ -18,11 +18,6 @@
   border: 4px solid orangered;
   margin: 3vw;
 }
-#submitFilter {
-  justify-content: center;
-  background-color: orangered;
-  color: white;
-}
 #pasandemail{
     text-align: center;
     /* justify-content: center; */
@@ -47,4 +42,9 @@ table{
   display: flex;
   justify-content:space-around;
   text-align: center;
+}
+#newMeetingButton, #submitFilter{
+  color: orangered;
+  margin: 2vh;
+  justify-content: center;
 }
