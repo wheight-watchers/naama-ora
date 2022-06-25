@@ -59,11 +59,28 @@ table{
 #user{
   color: orangered;
 }
-#buttonEdit,#buttonSave{
+#buttonEdit,#buttonSave,#buttonLogin{
   background-color: orangered;
   border-radius: 12%;
   padding: 1%;
   color:black;
   text-align: center;
   border:1px solid black;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.labelLogin{
+  color:orangered;
+  
+  
+}
+#h1Login{
+  text-decoration-line: underline;
+  text-decoration-color: orangered;
+}
+.loginInput{
+ 
+ border-color: orangered;
+  border-radius: 3%;
+
 }
