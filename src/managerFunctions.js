@@ -23,9 +23,9 @@ function getParams() {
       ${CurrentUser.address.city}
       <h4>age: ${CurrentUser.age}</h4> 
       <h4>height: ${CurrentUser.height}</h4>
-      <h4>start Weight: ${CurrentUser.Wheights.startWheight}</h4> 
+      <h4>start Weight: ${CurrentUser.Weights.startWeight}</h4> 
     <h2>meetings:</h2>`;
-    const meet = CurrentUser.Wheights.meetings;
+    const meet = CurrentUser.Weights.meetings;
     // let table=document.createElement("table")
     // let title=document.createElement("tr");
     // let subject1=document.createElement("td");
@@ -44,14 +44,14 @@ function getParams() {
     meet.forEach((m) => {
       table += `<tr>
          <td>${m.date + "   "}</td>
-        <td>${m.wheight}</td>
+        <td>${m.weight}</td>
         </tr></br>`;
       // let tr=document.createElement("tr");
       // let td1=document.createElement("td");
       // td1.innerText=m.date + "   ";
       // tr.appendChild(td1);
       // let td2=document.createElement("td");
-      // td2.innerText=m.wheight;
+      // td2.innerText=m.weight;
       // tr.appendChild(td2);
       // table.append(tr);
     });
@@ -59,7 +59,7 @@ function getParams() {
     document.getElementById("userDetails").innerHTML += table;
   };
 }
-const getUsersForManager = () => {
+function getUsersForManager () {
   if (start == 0) {
     debugger;
     const xhr = new XMLHttpRequest();
@@ -70,7 +70,7 @@ const getUsersForManager = () => {
         alert(`Error ${xhr.status}: ${xhr.statusText}`);
       } else {
         let jsonusers = JSON.parse(xhr.responseText).users;
-        let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights
+        let userMeetings = JSON.parse(xhr.responseText).users[0].Weights
           .meetings;
         numOfmeetings = Object.keys(userMeetings).length;
         console.log(jsonusers);
@@ -105,6 +105,7 @@ const getUsersForManager = () => {
             }
           });
         });
+        start += 1;
         document.getElementById("allUsers").innerHTML = "";
         // document
         //   .getElementById("allUsers")
@@ -113,7 +114,6 @@ const getUsersForManager = () => {
         // );
       }
     };
-    start += 1;
   }
 };
 function showUsers(jsonusers, numOfmeetings) {
@@ -127,10 +127,10 @@ function showUsers(jsonusers, numOfmeetings) {
   jsonusers?.forEach((user) => {
     debugger;
     bmi =
-      user.Wheights.meetings[numOfmeetings - 1].wheight /
+      user.Weights.meetings[numOfmeetings - 1].weight /
       (user.height * user.height);
     lastBmi =
-      user.Wheights.meetings[numOfmeetings - 2].wheight /
+      user.Weights.meetings[numOfmeetings - 2].weight /
       (user.height * user.height);
     var containerUser=document.createElement("div");
     // containerUser.id="containerUser";
@@ -152,13 +152,10 @@ function showUsers(jsonusers, numOfmeetings) {
     para.innerHTML = "CURRENT BMI : " + bmi;
     containerUser.appendChild(txt);
     containerUser.appendChild(para);
-    // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Wheights.startWheight / (user.height * user.height)) + `</br>`
-    // containerUser.appendChild(buttons);
+    // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Weights.startWeight / (user.height * user.height)) + `</br>`
     containerUser.appendChild(buttons);
     var allUsers=document.getElementById("allUsers");
     allUsers.appendChild(containerUser);
-    // container.appendChild(para);
-    // container.appendChild(buttons);
   });
   i = 0;
   jsonusers?.forEach((user) => {
@@ -203,7 +200,7 @@ function filterUsers() {
       const  c= document.getElementById("citySelect")
       const citySelect=c.options[c.selectedIndex].outerText;
       let users = JSON.parse(xhr.responseText).users;
-      let userMeetings = JSON.parse(xhr.responseText).users[0].Wheights
+      let userMeetings = JSON.parse(xhr.responseText).users[0].Weights
         .meetings;
       numOfmeetings = Object.keys(userMeetings).length;
       if (text != "") {
@@ -253,8 +250,8 @@ function filterByText(users, text) {
 function filterByWeight(users, biggerThanWeight, lowerThanWeight) {
   users = users.filter((u) => {
     return (
-      u.Wheights.meetings[numOfmeetings - 1].wheight > biggerThanWeight &&
-      u.Wheights.meetings[numOfmeetings - 1].wheight < lowerThanWeight
+      u.Weights.meetings[numOfmeetings - 1].weight > biggerThanWeight &&
+      u.Weights.meetings[numOfmeetings - 1].weight < lowerThanWeight
     );
   });
   return users;
@@ -264,15 +261,15 @@ function filterByGainedOrLost(users, lostOrGained, from, numOfmeetings) {
     if (from == "from_the_last_week") {
       users = users.filter((u) => {
         return (
-          u.Wheights.meetings[numOfmeetings - 1].wheight <
-          u.Wheights.meetings[numOfmeetings - 2].wheight
+          u.Weights.meetings[numOfmeetings - 1].weight <
+          u.Weights.meetings[numOfmeetings - 2].weight
         );
       });
     } else {
       users = users.filter((u) => {
         return (
-          u.Wheights.meetings[numOfmeetings - 1].wheight <
-          u.Wheights.startWheight
+          u.Weights.meetings[numOfmeetings - 1].weight <
+          u.Weights.startWeight
         );
       });
     }
@@ -280,15 +277,15 @@ function filterByGainedOrLost(users, lostOrGained, from, numOfmeetings) {
     if (from == "from_the_last_week") {
       users = users.filter((u) => {
         return (
-          u.Wheights.meetings[numOfmeetings - 1].wheight >
-          u.Wheights.meetings[numOfmeetings - 2].wheight
+          u.Weights.meetings[numOfmeetings - 1].weight >
+          u.Weights.meetings[numOfmeetings - 2].weight
         );
       });
     } else {
       users = users.filter((u) => {
         return (
-          u.Wheights.meetings[numOfmeetings - 1].wheight >
-          u.Wheights.startWheight
+          u.Weights.meetings[numOfmeetings - 1].weight >
+          u.Weights.startWeight
         );
       });
     }
@@ -299,7 +296,7 @@ function filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings) {
   let bmi;
   users = users.filter((u) => {
     bmi =
-      u.Wheights.meetings[numOfmeetings - 1].wheight / (u.height * u.height);
+      u.Weights.meetings[numOfmeetings - 1].weight / (u.height * u.height);
     return bmi < lowerThanBMI && bmi > biggerThanBMI;
   });
   return users;
@@ -319,7 +316,7 @@ function filterByAddress(users, citySelect, streetSelect) {
   }
   return users;
 }
-function newMeeting(){
-  
+function directToMeetings(){
+  debugger;
+  window.location.href = `Meetings.html`;
 }
-// window.onload=getUsersForManager();

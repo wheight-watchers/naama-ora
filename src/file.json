@@ -9,16 +9,16 @@
       "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
       "height": 1.7,
       "age": 33,
-      "Wheights": {
-        "startWheight": 60,
+      "Weights": {
+        "startWeight": 60,
         "meetings": [
           {
             "date": "12/04/2020",
-            "wheight": 59
+            "weight": 59
           },
           {
             "date": "18/04/2020",
-            "wheight": 62
+            "weight": 62
           }
         ]
       }
@@ -31,16 +31,16 @@
       "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
       "height": 1.7,
       "age": 33,
-      "Wheights": {
-        "startWheight": 60,
+      "Weights": {
+        "startWeight": 60,
         "meetings": [
           {
             "date": "12/04/2020",
-            "wheight": 59
+            "weight": 59
           },
           {
             "date": "18/04/2020",
-            "wheight": 62
+            "weight": 62
           }
         ]
       }
@@ -53,16 +53,16 @@
       "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
       "height": 1.7,
       "age": 33,
-      "Wheights": {
-        "startWheight": 60,
+      "Weights": {
+        "startWeight": 60,
         "meetings": [
           {
             "date": "12/04/2020",
-            "wheight": 59
+            "weight": 59
           },
           {
             "date": "18/04/2020",
-            "wheight": 62
+            "weight": 62
           }
         ]
       }
@@ -75,16 +75,16 @@
       "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
       "height": 1.7,
       "age": 33,
-      "Wheights": {
-        "startWheight": 60,
+      "Weights": {
+        "startWeight": 60,
         "meetings": [
           {
             "date": "12/04/2020",
-            "wheight": 59
+            "weight": 59
           },
           {
             "date": "18/04/2020",
-            "wheight": 62
+            "weight": 62
           }
         ]
       }

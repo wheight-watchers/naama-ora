@@ -10,8 +10,8 @@ function userDetails() {
     var value7 = JSON.parse(myData).address.building;
     var value8 = JSON.parse(myData).age;
     var value9 = JSON.parse(myData).height;
-    var value10 = JSON.parse(myData).Wheights.startWheight;
-    var meet = JSON.parse(myData).Wheights.meetings;
+    var value10 = JSON.parse(myData).Weights.startWeight;
+    var meet = JSON.parse(myData).Weights.meetings;
     console.log(meet);
     meet.forEach((m) => {
       debugger;
@@ -20,7 +20,7 @@ function userDetails() {
       document.getElementById("meeting").innerHTML +=
         "                          ";
       document.getElementById("meeting").innerHTML +=
-        "      weight:        " + m.wheight;
+        "      weight:        " + m.weight;
       document.getElementById("meeting").innerHTML += `</br>`;
     });
   
