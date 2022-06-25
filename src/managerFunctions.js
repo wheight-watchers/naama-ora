@@ -316,7 +316,14 @@ function filterByAddress(users, citySelect, streetSelect) {
   }
   return users;
 }
+
+function newMeeting(){
+
+}
+// window.onload=getUsersForManager();
+
 function directToMeetings(){
   debugger;
   window.location.href = `Meetings.html`;
 }
+
