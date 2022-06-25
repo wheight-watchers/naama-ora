@@ -48,3 +48,22 @@ table{
   margin: 2vh;
   justify-content: center;
 }
+#mydetails{
+  justify-content: center;
+  text-align: center;
+  color: black;
+  margin-right: 20%;
+  margin-left: 20%;
+  border:4px solid orangered;
+}
+#user{
+  color: orangered;
+}
+#buttonEdit,#buttonSave{
+  background-color: orangered;
+  border-radius: 12%;
+  padding: 1%;
+  color:black;
+  text-align: center;
+  border:1px solid black;
+}
