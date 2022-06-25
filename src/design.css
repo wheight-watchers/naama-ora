@@ -14,7 +14,7 @@
 #managerTitle {
   color: orangered;
 }
-#filter_form {
+#filter_form , #meetForm{
   border: 4px solid orangered;
   margin: 3vw;
 }
