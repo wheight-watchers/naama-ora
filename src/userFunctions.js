@@ -142,3 +142,6 @@ function saveYourDetails() {
 
 
 }
+function searchDetails(){
+  debugger;
+}
