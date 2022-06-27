@@ -139,9 +139,8 @@ function saveYourDetails() {
     document.getElementById("ageInput").value=value8
     document.getElementById("heightInput").value=value9
     
-
-
 }
-function searchDetails(){
+function directToProducts(){
   debugger;
-}
+  window.location.href = 'Product.html';
+  }
