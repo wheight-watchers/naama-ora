@@ -21,7 +21,7 @@ function userDetails() {
     document.getElementById("meeting").innerHTML +=
       "                          ";
     document.getElementById("meeting").innerHTML +=
-      "      weight:        " + m.wheight;
+      "      weight:        " + m.weight;
     document.getElementById("meeting").innerHTML += `</br>`;
   });
 
