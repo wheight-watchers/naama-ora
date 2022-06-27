@@ -74,11 +74,11 @@ table{
   
   
 }
-#h1Login{
+#h1Login,#h1search{
   text-decoration-line: underline;
   text-decoration-color: orangered;
 }
-.loginInput{
+.loginInput,#productName{
  
  border-color: orangered;
   border-radius: 3%;
