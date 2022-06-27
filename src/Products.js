@@ -25,6 +25,10 @@ function searchProducts() {
       return data
     }).then((data)=>
     {
+      if(data.length==0){
+        alert("There is no such product")
+      }
+      else{
 console.log(data)
 data.forEach((d)=>{document.getElementById("ingredients").innerHTML+=
 `<h1>${d.shmmitzrach}</h1>`+
@@ -34,11 +38,6 @@ data.forEach((d)=>{document.getElementById("ingredients").innerHTML+=
 `<h3> food energy :${d.food_energy}</h3>`+
 `<h3>poly unsaturated fat :${d.poly_unsaturated_fat}</h3>`
 ;debugger})
-    })
+ } })
     .catch((err) => console.log(err));
-    // console.log(result);
-    // let ingredients=document.getElementById("ingredients")
-    // let div=``
-   
-    // ingredients.innerHTML+=div;
 }
