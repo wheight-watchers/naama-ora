@@ -59,7 +59,7 @@ table{
 #user{
   color: orangered;
 }
-#buttonEdit,#buttonSave,#buttonLogin,#buttonDetail{
+#buttonEdit,#buttonSave,#buttonLogin,#buttonDetail,#buttonProduct{
   background-color: orangered;
   border-radius: 12%;
   padding: 1%;
