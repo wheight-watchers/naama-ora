@@ -1,5 +1,8 @@
-function searchproducts() {
+
+
+function searchProducts() {
   debugger;
+  document.getElementById("ingredients").innerHTML=""
   const options = {
     method: "GET",
     headers: {},
@@ -20,13 +23,22 @@ function searchproducts() {
         return product.shmmitzrach.includes(productname)
       });
       return data
+    }).then((data)=>
+    {
+console.log(data)
+data.forEach((d)=>{document.getElementById("ingredients").innerHTML+=
+`<h1>${d.shmmitzrach}</h1>`+
+`<h3>total fat:${d.total_fat}</h3>`+
+`<h3>total sugars :${d.total_sugars}</h3>`+
+`<h3> carbohydrates :${d.carbohydrates}</h3>`+
+`<h3> food energy :${d.food_energy}</h3>`+
+`<h3>poly unsaturated fat :${d.poly_unsaturated_fat}</h3>`
+;debugger})
     })
     .catch((err) => console.log(err));
-    console.log(result);
-    let ingredients=document.getElementById("ingredients")
+    // console.log(result);
+    // let ingredients=document.getElementById("ingredients")
     // let div=``
-    result.forEach((i)=>{
-        ingredients.innerHTML+=`<p>${i}</p>`
-    })
+   
     // ingredients.innerHTML+=div;
 }
