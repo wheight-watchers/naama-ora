@@ -151,9 +151,9 @@ function directToProducts() {
   debugger;
   window.location.href = "src/Product.html";
 }
-function directToDiaryManagement() {
-  debugger;
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("userId");
-  window.location.href = `diaryManagement.html?id=${id}`;
-}
+// function directToDiaryManagement() {
+//   debugger;
+//   const params = new URLSearchParams(window.location.search);
+//   const id = params.get("userId");
+//   window.location.href = `diaryManagement.html?id=${id}`;
+// }

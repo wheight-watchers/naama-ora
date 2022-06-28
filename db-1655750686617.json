@@ -2,9 +2,9 @@
   "manager": {
     "id": 212,
     "first-name": "Moshe",
-    "last-name": "moshayov",
-    "email":"manager@gmail.com",
-    "password":"123"
+    "last-name": "Moshayov",
+    "email": "manager@gmail.com",
+    "password": "123"
   },
   "users": [
     {
@@ -31,7 +31,12 @@
             "weight": 117
           }
         ]
-      }
+      },
+      "diary": [
+        { "date": "12/04/2020", "summary": 90 },
+        { "date": "13/04/2020", "summary": 80 },
+        { "date": "14/04/2020", "summary": 100 }
+      ]
     },
     {
       "id": 2,
@@ -57,7 +62,12 @@
             "weight": 75
           }
         ]
-      }
+      },
+      "diary": [
+        { "date": "12/04/2020", "summary": 90 },
+        { "date": "13/04/2020", "summary": 80 },
+        { "date": "14/04/2020", "summary": 100 }
+      ]
     },
     {
       "id": 3,
@@ -83,7 +93,12 @@
             "weight": 62
           }
         ]
-      }
+      },
+      "diary": [
+        { "date": "12/04/2020", "summary": 90 },
+        { "date": "13/04/2020", "summary": 80 },
+        { "date": "14/04/2020", "summary": 100 }
+      ]
     },
     {
       "id": 4,
@@ -109,7 +124,12 @@
             "weight": 83
           }
         ]
-      }
+      },
+      "diary": [
+        { "date": "12/04/2020", "summary": 90 },
+        { "date": "13/04/2020", "summary": 80 },
+        { "date": "14/04/2020", "summary": 100 }
+      ]
     }
   ]
 }
