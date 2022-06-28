@@ -19,30 +19,35 @@ function userDetails() {
     var value7 = CurrentUser.address.building;
     var value8 = CurrentUser.age;
     var value9 = CurrentUser.height;
-    var value10 =CurrentUser.Weights.startWeight;
+    var value10 = CurrentUser.Weights.startWeight;
     var meet = CurrentUser.Weights.meetings;
-    console.log(meet);
+    // console.log(meet);
     meet.forEach((m) => {
       debugger;
 
-      document.getElementById("meeting").innerHTML +=
-        "     date:         " + m.date;
-      document.getElementById("meeting").innerHTML +=
-        "                          ";
-      document.getElementById("meeting").innerHTML +=
-        "      weight:        " + m.weight;
-      document.getElementById("meeting").innerHTML += `</br>`;
+      document.getElementById(
+        "meeting"
+      ).innerHTML += `<h4>date:     </h4><h5>${m.date}</h5>`;
+      document.getElementById(
+        "meeting"
+      ).innerHTML += `<h4>weight:      </h4><h5>${m.weight}</h5>`;
+      document.getElementById("meeting").innerHTML += "--------";
     });
 
     document.getElementById("user").innerHTML += value1;
-    document.getElementById("name").innerHTML = value1 + " " + value2;
-    document.getElementById("email").innerHTML = value3;
-    document.getElementById("height").innerHTML = value9;
-    document.getElementById("age").innerHTML = value8;
-    document.getElementById("address").innerHTML =
-      value6 + " " + value7 + " " + value5;
-    document.getElementById("StartingWeight").innerHTML = value10;
+    document.getElementById("name").innerHTML += value1 + " " + value2;
+    document.getElementById("email").innerHTML += value3;
+    document.getElementById("age&height").innerHTML += `<h4>${
+      value8 +
+      "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +
+      value9
+    }</h4>`;
+    document.getElementById("address").innerHTML +=
+      value6 + " " + value7 + " , " + value5;
+    document.getElementById("StartingWeight").innerHTML +=
+      "\xa0\xa0\xa0" + value10;
   };
+  getDiaryForCurrentuser();
 }
 function directToEditdetails() {
   window.location.href = "editUser.html";
