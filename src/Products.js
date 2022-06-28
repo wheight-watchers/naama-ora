@@ -41,10 +41,13 @@ function searchProducts() {
           `<h3>poly unsaturated fat :${d.poly_unsaturated_fat}</h3>`
           ; debugger
         })
+  document.getElementById("buttonProduct-clear").style.display="inline";
+
       }
     })
     .catch((err) => console.log(err));
 }
 function clearProducts(){
   document.getElementById("ingredients").innerHTML=""
+  document.getElementById("buttonProduct-clear").style.display="none";
 }

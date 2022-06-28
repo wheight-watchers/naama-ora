@@ -16,12 +16,14 @@
     <h1 id="h1search">Enter the product for which you want to check the nutritional value,
         To be on the weight loss trend as you want - avoid eating products whose nutritional value is not good for you!</h1>
     <input type="text" id="productName" placeholder="enter the product">
-    <button onclick="searchProducts()" id="buttonProduct">search product</button>
-    <div id="ingredients"></div>
+    <button onclick="searchProducts()" id="buttonProduct-search">search product</button>
+    <button onclick="clearProducts()" id="buttonProduct-clear">clear</button>
+    <div id="ingredients">
+        
+    </div>
     <div id="load">
         <img src="./images/Preloader_1.gif"/>
     </div>
-    <button onclick="clearProducts()" id="buttonProduct">clear</button>
     <script src="Products.js"></script>
 </body>
 
