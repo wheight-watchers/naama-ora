@@ -10,42 +10,40 @@
 
 <body style="text-align: center;" onload="userDetails()">
     <h1 id="user">HELLOW </h1>
-    <div id="mydetails">
-        <h1 id="name"></h1>
-        <h3>Your mail</h3>
-        <h4 id="email"></h4>
-        <h3>Your address</h3>
-        <h4 id="address"></h4>
-        <h3>Height</h3>
-        <h4 id="height"></h4>
-        <h3>Age</h3>
-        <h4 id="age"></h4>
-        <h3>Starting weight</h3>
-        <h4 id="StartingWeight"></h4>
-        <h2>Your weight per session:</h2>
-        <div id="meeting"></div>
-    </div>
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
+    <nav id="user-nav">
+        <div id="leftside">
+            <div id="mydetails">
+                <h1 id="name"></h1>
+                <!-- <h3></h3> -->
+                <h3 id="email">mail address: </h3>
+                <h3>Your address</h3>
+                <h4 id="address"></h4>
+                <h3>Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Height</h3>
+                <h4 id="age&height"></h4>
+                <h3 id="StartingWeight">Starting weight:</h3>
+                <h3>Your weight per session:</h3>
+                <div id="meeting"></div>
             </div>
-            <div class="modal-body">
-                <div id="diary">
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
-
+            <button onclick="directToEditdetails()" id="buttonEdit">edit details</button>
         </div>
-    </div>
-    <!-- <button onclick="directToDiaryManagement()" ></button> -->
-    </br>
-    <nav>
-        <button id="myBtn" class="show-modal">my diary</button>
-        <button onclick="editdetails()" id="buttonEdit">edit details</button>
+        <div id="rightSide">
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+
+            </div>
+            <div id="diary"></div>
+            <button id="myBtn" class="show-modal">add</button>
+        </div>
     </nav>
     <script src="userFunctions.js"></script>
     <script src="Products.js"></script>
