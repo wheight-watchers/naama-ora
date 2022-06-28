@@ -142,5 +142,5 @@ function saveYourDetails() {
 }
 function directToProducts(){
   debugger;
-  window.location.href = 'Product.html';
+  window.location.href = 'src/Product.html';
   }

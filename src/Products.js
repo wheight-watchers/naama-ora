@@ -1,5 +1,3 @@
-
-
 function searchProducts() {
   debugger;
   document.getElementById('load').style.display='block'
@@ -46,4 +44,7 @@ function searchProducts() {
       }
     })
     .catch((err) => console.log(err));
+}
+function clearProducts(){
+  document.getElementById("ingredients").innerHTML=""
 }
