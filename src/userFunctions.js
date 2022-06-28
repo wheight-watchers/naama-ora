@@ -44,9 +44,13 @@ function userDetails() {
     document.getElementById("StartingWeight").innerHTML = value10;
   };
 }
-function editdetails() {
+function directToEditdetails() {
   window.location.href = "editUser.html";
   debugger;
+}
+function directToProducts() {
+  debugger;
+  window.location.href = "src/Product.html";
 }
 function edit() {
   debugger;
@@ -120,37 +124,30 @@ function saveYourDetails() {
   //   value6 + " " + value7 + " " + value5;
   // document.getElementById("StartingWeight").innerHTML = value10;
 }
-function editdetails() {
-  window.location.href = "editUser.html";
-  debugger;
-}
-async function edit() {
-  debugger;
-  var myData = localStorage["cu"];
-  // localStorage.clear();
-  var value1 = JSON.parse(myData).firstName;
-  var value2 = JSON.parse(myData).lastName;
-  var value3 = JSON.parse(myData).email;
-  var value5 = JSON.parse(myData).address.city;
-  var value6 = JSON.parse(myData).address.street;
-  var value7 = JSON.parse(myData).address.building;
-  var value8 = JSON.parse(myData).age;
-  var value9 = JSON.parse(myData).height;
+// async function edit() {
+//   debugger;
+//   var myData = localStorage["cu"];
+//   // localStorage.clear();
+//   var value1 = JSON.parse(myData).firstName;
+//   var value2 = JSON.parse(myData).lastName;
+//   var value3 = JSON.parse(myData).email;
+//   var value5 = JSON.parse(myData).address.city;
+//   var value6 = JSON.parse(myData).address.street;
+//   var value7 = JSON.parse(myData).address.building;
+//   var value8 = JSON.parse(myData).age;
+//   var value9 = JSON.parse(myData).height;
 
-  document.getElementById("name").nameInput += "hello " + value1;
-  document.getElementById("nameInput").value = value1;
-  document.getElementById("lastNameInput").value = value2;
-  document.getElementById("emailInput").value = value3;
-  document.getElementById("addressCityInput").value = value5;
-  document.getElementById("addressStreetInput").value = value6;
-  document.getElementById("addressBuildingInput").value = value7;
-  document.getElementById("ageInput").value = value8;
-  document.getElementById("heightInput").value = value9;
-}
-function directToProducts() {
-  debugger;
-  window.location.href = "src/Product.html";
-}
+//   document.getElementById("name").nameInput += "hello " + value1;
+//   document.getElementById("nameInput").value = value1;
+//   document.getElementById("lastNameInput").value = value2;
+//   document.getElementById("emailInput").value = value3;
+//   document.getElementById("addressCityInput").value = value5;
+//   document.getElementById("addressStreetInput").value = value6;
+//   document.getElementById("addressBuildingInput").value = value7;
+//   document.getElementById("ageInput").value = value8;
+//   document.getElementById("heightInput").value = value9;
+// }
+
 // function directToDiaryManagement() {
 //   debugger;
 //   const params = new URLSearchParams(window.location.search);
