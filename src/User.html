@@ -25,11 +25,31 @@
         <h2>Your weight per session:</h2>
         <div id="meeting"></div>
     </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="diary">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <button onclick="directToDiaryManagement()" ></button> -->
     </br>
-    <button onclick="editdetails()" id="buttonEdit">To edit your details</button>
-    <button onclick="directToDiaryManagement()" id="buttonEdit">To diary management</button>
+    <nav>
+        <button id="myBtn" class="show-modal">my diary</button>
+        <button onclick="editdetails()" id="buttonEdit">edit details</button>
+    </nav>
     <script src="userFunctions.js"></script>
     <script src="Products.js"></script>
+    <script src="diaryManagement.js"></script>
 
 </body>
 

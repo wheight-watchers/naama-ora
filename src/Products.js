@@ -1,7 +1,7 @@
 function searchProducts() {
   debugger;
-  document.getElementById('load').style.display='block'
-  document.getElementById("ingredients").innerHTML = ""
+  document.getElementById("load").style.display = "block";
+  document.getElementById("ingredients").innerHTML = "";
   const options = {
     method: "GET",
     headers: {},
@@ -18,36 +18,34 @@ function searchProducts() {
       return data;
     })
     .then((data) => {
-    
       data = data.filter((product) => {
-        return product.shmmitzrach.includes(productname)
+        return product.shmmitzrach.includes(productname);
       });
-      return data
-    }).then((data) => {
+      return data;
+    })
+    .then((data) => {
       if (data.length == 0) {
-        alert("There is no such product")
-        document.getElementById('load').style.display='none'
-      }
-      else {
-        document.getElementById('load').style.display='none'
-        console.log(data)
+        alert("There is no such product");
+        document.getElementById("load").style.display = "none";
+      } else {
+        document.getElementById("load").style.display = "none";
+        console.log(data);
         data.forEach((d) => {
           document.getElementById("ingredients").innerHTML +=
-          `<h1>${d.shmmitzrach}</h1>` +
-          `<h3>total fat:${d.total_fat}</h3>` +
-          `<h3>total sugars :${d.total_sugars}</h3>` +
-          `<h3> carbohydrates :${d.carbohydrates}</h3>` +
-          `<h3> food energy :${d.food_energy}</h3>` +
-          `<h3>poly unsaturated fat :${d.poly_unsaturated_fat}</h3>`
-          ; debugger
-        })
-  document.getElementById("buttonProduct-clear").style.display="inline";
-
+            `<h1>${d.shmmitzrach}</h1>` +
+            `<h3>total fat:${d.total_fat}</h3>` +
+            `<h3>total sugars :${d.total_sugars}</h3>` +
+            `<h3> carbohydrates :${d.carbohydrates}</h3>` +
+            `<h3> food energy :${d.food_energy}</h3>` +
+            `<h3>poly unsaturated fat :${d.poly_unsaturated_fat}</h3>`;
+          debugger;
+        });
+        document.getElementById("buttonProduct-clear").style.display = "inline";
       }
     })
     .catch((err) => console.log(err));
 }
-function clearProducts(){
-  document.getElementById("ingredients").innerHTML=""
-  document.getElementById("buttonProduct-clear").style.display="none";
+function clearProducts() {
+  document.getElementById("ingredients").innerHTML = "";
+  document.getElementById("buttonProduct-clear").style.display = "none";
 }
