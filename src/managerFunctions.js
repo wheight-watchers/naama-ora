@@ -1,10 +1,11 @@
 let start = 0;
+const configUrl="../db-1655750686617.json";
 function getParams() {
   debugger;
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../db-1655750686617.json");
+  xhr.open("GET",configUrl );
   xhr.send();
   xhr.onload = () => {
     let users = JSON.parse(xhr.responseText).users;
@@ -63,7 +64,7 @@ function getUsersForManager () {
   if (start == 0) {
     debugger;
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "../db-1655750686617.json");
+    xhr.open("GET", configUrl);
     xhr.send();
     xhr.onload = () => {
       if (xhr.status != 200) {
@@ -118,7 +119,7 @@ function getUsersForManager () {
 };
 function showUsers(jsonusers, numOfmeetings) {
   debugger;
-  // var container = document.createElement("div");
+  // let container = document.createElement("div");
   // container.id="container"
   let i = 0;
   let bmi;
@@ -128,11 +129,11 @@ function showUsers(jsonusers, numOfmeetings) {
     debugger;
     bmi =
       user.Weights.meetings[numOfmeetings - 1].weight /
-      (user.height * user.height);
+      (user.height **2);
     lastBmi =
       user.Weights.meetings[numOfmeetings - 2].weight /
-      (user.height * user.height);
-    var containerUser=document.createElement("div");
+      (user.height **2);
+    let containerUser=document.createElement("div");
     // containerUser.id="containerUser";
     containerUser.innerHTML="";
     const para = document.createElement("p");
@@ -154,13 +155,13 @@ function showUsers(jsonusers, numOfmeetings) {
     containerUser.appendChild(para);
     // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Weights.startWeight / (user.height * user.height)) + `</br>`
     containerUser.appendChild(buttons);
-    var allUsers=document.getElementById("allUsers");
+    let allUsers=document.getElementById("allUsers");
     allUsers.appendChild(containerUser);
   });
   i = 0;
   jsonusers?.forEach((user) => {
     debugger;
-    var elem = document.getElementById("b" + i);
+    let elem = document.getElementById("b" + i);
     i = i + 1;
     elem.addEventListener(
       "click",
@@ -180,7 +181,7 @@ function directMyDetails(user) {
 function filterUsers() {
   debugger;
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../db-1655750686617.json");
+  xhr.open("GET", configUrl);
   xhr.send();
   xhr.onloadend = () => {
     if (xhr.status != 200) {
