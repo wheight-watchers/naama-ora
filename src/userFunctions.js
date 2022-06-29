@@ -2,12 +2,14 @@ function userDetails() {
   debugger;
   const params = new URLSearchParams(window.location.search);
   const id = params.get("userId");
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../db-1655750686617.json");
-  xhr.send();
-  xhr.onload = () => {
-    let users = JSON.parse(xhr.responseText).users;
-    CurrentUser = users.find((u) => u.id == id);
+  // const xhr = new XMLHttpRequest();
+  // xhr.open("GET", "../db-1655750686617.json");
+  // xhr.send();
+  const res = await fetch("../db-1655750686617.json");
+  const users = await res.json();
+  CurrentUser = users.find((u) => u.id == id);
+  // xhr.onload = () => {
+  //   let users = JSON.parse(xhr.responseText).users;
     // var myData = localStorage["cu"];
     // localStorage.clear();
     var value3 = CurrentUser.email;
@@ -46,7 +48,7 @@ function userDetails() {
       value6 + " " + value7 + " , " + value5;
     document.getElementById("StartingWeight").innerHTML +=
       "\xa0\xa0\xa0" + value10;
-  };
+  // };
   getDiaryForCurrentuser();
 }
 function directToEditdetails() {
@@ -59,16 +61,21 @@ function directToProducts() {
 }
 function edit() {
   debugger;
-  var myData = localStorage["cu"];
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("userId");
+  const res = await fetch("../db-1655750686617.json");
+  const users = await res.json();
+  CurrentUser = users.find((u) => u.id == id);
+  // var myData = localStorage["cu"];
   // localStorage.clear();
-  var value1 = JSON.parse(myData).firstName;
-  var value2 = JSON.parse(myData).lastName;
-  var value3 = JSON.parse(myData).email;
-  var value5 = JSON.parse(myData).address.city;
-  var value6 = JSON.parse(myData).address.street;
-  var value7 = JSON.parse(myData).address.building;
-  var value8 = JSON.parse(myData).age;
-  var value9 = JSON.parse(myData).height;
+  var value1 = CurrentUser.firstName;
+  var value2 = CurrentUser.lastName;
+  var value3 = CurrentUser.email;
+  var value5 = CurrentUser.address.city;
+  var value6 = CurrentUser.address.street;
+  var value7 = CurrentUser.address.building;
+  var value8 = CurrentUser.age;
+  var value9 = CurrentUser.height;
 
   document.getElementById("name").nameInput += "hello " + value1;
   document.getElementById("nameInput").value = value1;
@@ -82,8 +89,13 @@ function edit() {
 }
 function saveYourDetails() {
   debugger;
-  var myData = localStorage["cu"];
-  var id = JSON.parse(myData).id;
+  // var myData = localStorage["cu"];
+  // var id = JSON.parse(myData).id;
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("userId");
+  const res = await fetch("../db-1655750686617.json");
+  const users = await res.json();
+  CurrentUser = users.find((u) => u.id == id);
   var firstName = document.getElementById("nameInput").value;
   var lastName = document.getElementById("lastNameInput").value;
   var email = document.getElementById("emailInput").value;
