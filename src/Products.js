@@ -78,7 +78,7 @@ function CreateArrayOfAllProductsName() {
       console.log(arrProductsName.length);
       debugger;
       localStorage.setItem("arrProductsName", JSON.stringify(arrProductsName));
-      document.getElementById("buttonEdit").style.display = "block";
+      // document.getElementById("buttonEdit").style.display = "block";
     });
 }
 async function AutomaticSearchResults() {

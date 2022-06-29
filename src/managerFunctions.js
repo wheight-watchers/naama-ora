@@ -1,11 +1,11 @@
 let start = 0;
-const configUrl="../db-1655750686617.json";
+const configUrl = "../db-1655750686617.json";
 function getParams() {
   debugger;
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const xhr = new XMLHttpRequest();
-  xhr.open("GET",configUrl );
+  xhr.open("GET", configUrl);
   xhr.send();
   xhr.onload = () => {
     let users = JSON.parse(xhr.responseText).users;
@@ -60,7 +60,7 @@ function getParams() {
     document.getElementById("userDetails").innerHTML += table;
   };
 }
-function getUsersForManager () {
+function getUsersForManager() {
   if (start == 0) {
     debugger;
     const xhr = new XMLHttpRequest();
@@ -77,7 +77,7 @@ function getUsersForManager () {
         console.log(jsonusers);
         let cities = [];
         let ind = 0;
-        jsonusers.forEach((u,i) => {
+        jsonusers.forEach((u, i) => {
           debugger;
           let CITY = JSON.stringify(u.address.city).replace(/"/g, "");
           // alert(`${i} -> ${CITY}`);
@@ -90,12 +90,12 @@ function getUsersForManager () {
         const city = document.getElementById("citySelect");
         const street = document.getElementById("streetSelect");
         let index = 1;
-        city.options[0] = new Option("city",0);
-        street.options[0] = new Option("street",0);
+        city.options[0] = new Option("city", 0);
+        street.options[0] = new Option("street", 0);
         cities.forEach((c, i) => {
           debugger;
           // alert(`${i} -> ${c}`);
-          city.options[i+1] = new Option(c, i+1);
+          city.options[i + 1] = new Option(c, i + 1);
           jsonusers.forEach((j, ind) => {
             debugger;
             if (j.address.city == c) {
@@ -116,7 +116,7 @@ function getUsersForManager () {
       }
     };
   }
-};
+}
 function showUsers(jsonusers, numOfmeetings) {
   debugger;
   // let container = document.createElement("div");
@@ -124,22 +124,21 @@ function showUsers(jsonusers, numOfmeetings) {
   let i = 0;
   let bmi;
   if (jsonusers == [])
-    document.getElementById("allUsers").innerHTML += <p>no suitable users found</p>;
+    document.getElementById(
+      "allUsers"
+    ).innerHTML += `<p>no suitable users found</p>`;
   jsonusers?.forEach((user) => {
     debugger;
-    bmi =
-      user.Weights.meetings[numOfmeetings - 1].weight /
-      (user.height **2);
+    bmi = user.Weights.meetings[numOfmeetings - 1].weight / user.height ** 2;
     lastBmi =
-      user.Weights.meetings[numOfmeetings - 2].weight /
-      (user.height **2);
-    let containerUser=document.createElement("div");
+      user.Weights.meetings[numOfmeetings - 2].weight / user.height ** 2;
+    let containerUser = document.createElement("div");
     // containerUser.id="containerUser";
-    containerUser.innerHTML="";
+    containerUser.innerHTML = "";
     const para = document.createElement("p");
     const buttons = document.createElement("button");
     const txt = document.createElement("txt");
-    txt.id="textForUser";
+    txt.id = "textForUser";
     buttons.innerText = "details";
     buttons.id = "b" + i;
     buttons.className = "btn btn-outline-info";
@@ -147,15 +146,14 @@ function showUsers(jsonusers, numOfmeetings) {
     i = i + 1;
     if (bmi < lastBmi) para.style.color = "green";
     else para.style.color = "red";
-    txt.innerHTML=`<h3>${
-      user.firstName + " " + user.lastName}</h3>`;
+    txt.innerHTML = `<h3>${user.firstName + " " + user.lastName}</h3>`;
     // container.append(`${user.firstName + " " + user.lastName}`);
     para.innerHTML = "CURRENT BMI : " + bmi;
     containerUser.appendChild(txt);
     containerUser.appendChild(para);
     // document.getElementById("allUsers").innerHTML += "START BMI : " + (user.Weights.startWeight / (user.height * user.height)) + `</br>`
     containerUser.appendChild(buttons);
-    let allUsers=document.getElementById("allUsers");
+    let allUsers = document.getElementById("allUsers");
     allUsers.appendChild(containerUser);
   });
   i = 0;
@@ -166,16 +164,20 @@ function showUsers(jsonusers, numOfmeetings) {
     elem.addEventListener(
       "click",
       function () {
+        debugger;
         directMyDetails(user);
       },
       false
     );
   });
-  start +=1;
+  start += 1;
   // return container;
 }
 function directMyDetails(user) {
   debugger;
+  // let url = new URL("localHost:8080/Details.html");
+  // url.searchParams.set("id", user.id);
+  // window.location.href =url.href;
   window.location.href = `Details.html?id=${user.id}`;
 }
 function filterUsers() {
@@ -196,13 +198,12 @@ function filterUsers() {
       const from = document.getElementById("select_from").value;
       const lowerThanBMI = document.getElementById("lowerThanBMI").value;
       const biggerThanBMI = document.getElementById("biggerThanBMI").value;
-      const s = document.getElementById("streetSelect")
-      const streetSelect=s.options[s.selectedIndex].outerText;
-      const  c= document.getElementById("citySelect")
-      const citySelect=c.options[c.selectedIndex].outerText;
+      const s = document.getElementById("streetSelect");
+      const streetSelect = s.options[s.selectedIndex].outerText;
+      const c = document.getElementById("citySelect");
+      const citySelect = c.options[c.selectedIndex].outerText;
       let users = JSON.parse(xhr.responseText).users;
-      let userMeetings = JSON.parse(xhr.responseText).users[0].Weights
-        .meetings;
+      let userMeetings = JSON.parse(xhr.responseText).users[0].Weights.meetings;
       numOfmeetings = Object.keys(userMeetings).length;
       if (text != "") {
         users = filterByText(users, text);
@@ -236,11 +237,11 @@ function filterUsers() {
 function filterByText(users, text) {
   users = users.filter((u) => {
     return (
-      u.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-      u.lastName.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+      u.firstName.toLowerCase().includes(text.toLowerCase()) ||
+      u.lastName.toLowerCase().includes(text.toLowerCase()) ||
       u.address.street.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
       u.address.city.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
-      u.email.toLowerCase().indexOf(text.toLowerCase()) > -1 ||
+      u.email.toLowerCase().includes(text.toLowerCase()) ||
       u.id.toString().indexOf(text) > -1 ||
       u.age.toString().indexOf(text) > -1 ||
       u.height.toString().indexOf(text) > -1
@@ -250,10 +251,8 @@ function filterByText(users, text) {
 }
 function filterByWeight(users, biggerThanWeight, lowerThanWeight) {
   users = users.filter((u) => {
-    return (
-      u.Weights.meetings[numOfmeetings - 1].weight > biggerThanWeight &&
-      u.Weights.meetings[numOfmeetings - 1].weight < lowerThanWeight
-    );
+    let userWheight = u.Weights.meetings[numOfmeetings - 1].weight;
+    return userWheight > biggerThanWeight && userWheight < lowerThanWeight;
   });
   return users;
 }
@@ -261,16 +260,14 @@ function filterByGainedOrLost(users, lostOrGained, from, numOfmeetings) {
   if (lostOrGained == "lost_weight") {
     if (from == "from_the_last_week") {
       users = users.filter((u) => {
-        return (
-          u.Weights.meetings[numOfmeetings - 1].weight <
-          u.Weights.meetings[numOfmeetings - 2].weight
-        );
+        let currentWheight = u.Weights.meetings[numOfmeetings - 1].weight;
+        let lastWheight = u.Weights.meetings[numOfmeetings - 2].weight;
+        return currentWheight < lastWheight;
       });
     } else {
       users = users.filter((u) => {
         return (
-          u.Weights.meetings[numOfmeetings - 1].weight <
-          u.Weights.startWeight
+          u.Weights.meetings[numOfmeetings - 1].weight < u.Weights.startWeight
         );
       });
     }
@@ -285,8 +282,7 @@ function filterByGainedOrLost(users, lostOrGained, from, numOfmeetings) {
     } else {
       users = users.filter((u) => {
         return (
-          u.Weights.meetings[numOfmeetings - 1].weight >
-          u.Weights.startWeight
+          u.Weights.meetings[numOfmeetings - 1].weight > u.Weights.startWeight
         );
       });
     }
@@ -296,35 +292,27 @@ function filterByGainedOrLost(users, lostOrGained, from, numOfmeetings) {
 function filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings) {
   let bmi;
   users = users.filter((u) => {
-    bmi =
-      u.Weights.meetings[numOfmeetings - 1].weight / (u.height * u.height);
+    bmi = u.Weights.meetings[numOfmeetings - 1].weight / (u.height * u.height);
     return bmi < lowerThanBMI && bmi > biggerThanBMI;
   });
   return users;
 }
 function filterByAddress(users, citySelect, streetSelect) {
-  users=users.filter((u)=>{
-    return(
-      u.address.city==citySelect
-    );
-  })
-  if(streetSelect!="street"){
-    users=users.filter((u)=>{
-      return(
-        u.address.street==streetSelect
-      );
-    })
+  users = users.filter((u) => {
+    return u.address.city == citySelect;
+  });
+  if (streetSelect != "street") {
+    users = users.filter((u) => {
+      return u.address.street == streetSelect;
+    });
   }
   return users;
 }
 
-function newMeeting(){
-
-}
+function newMeeting() {}
 // window.onload=getUsersForManager();
 
-function directToMeetings(){
+function directToMeetings() {
   debugger;
   window.location.href = `Meetings.html`;
 }
-

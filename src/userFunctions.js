@@ -65,6 +65,7 @@ async function edit() {
   debugger;
   const params = new URLSearchParams(window.location.search);
   const id = params.get("userId");
+  // const res = await fetch("../db-1655750686617.json");
   const res = await fetch("../db-1655750686617.json");
   const users = await res.json();
   CurrentUser = users.find((u) => u.id == id);
