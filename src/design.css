@@ -184,3 +184,9 @@ display: none;
   border:5px double orangered;
   margin: 3%;
 }
+.automaticInput{
+  background-color: white;
+  color: orangered;
+  justify-self: baseline;
+  text-align: left;
+}
