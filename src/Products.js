@@ -109,7 +109,7 @@ async function AutomaticSearchResults() {
     debugger;
     if (arrProductsName[i].includes(inputValue) == true) {
       document.getElementById("resultAutomatic").innerHTML +=
-       `<button id="b+${i}" onclick="valueToInput(this.id)">${arrProductsName[i]}</button>`+
+       `<button class="automaticInput" id="b${i}" onclick="valueToInput(this.id)">${arrProductsName[i]}</button>`+
       `<br></br>`
     }
   }
