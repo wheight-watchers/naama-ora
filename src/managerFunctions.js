@@ -123,7 +123,7 @@ function showUsers(jsonusers, numOfmeetings) {
   let i = 0;
   let bmi;
   if (jsonusers == [])
-    document.getElementById("allUsers").innerHTML += "no suitable users found";
+    document.getElementById("allUsers").innerHTML += <p>no suitable users found</p>;
   jsonusers?.forEach((user) => {
     debugger;
     bmi =

@@ -21,7 +21,7 @@ const logIn = () => {
         CurrentUser = users.find((u) => u.email == mail && u.id == pswd);
         if (CurrentUser != null) {
           localStorage.setItem("cu", JSON.stringify(CurrentUser));
-          window.location.href = "src/User.html";
+          window.location.href = `src/User.html?userId=${CurrentUser.id}`;
         } else alert("user not found");
       }
     }
