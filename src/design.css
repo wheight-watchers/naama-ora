@@ -30,18 +30,29 @@ tr{
   justify-content: center;
   text-align: center;
   color: black;
-  border:1px solid orangered;
+}
+th{
+  padding: 4%;
+  text-align: center;
+  justify-content: center;
+  font-weight:900;
+  border:0.5px solid orangered;
+  height: 8vh;
+  width: 8vw;
 }
 td{
   color: orangered;
   text-align: center;
   border:1px solid black;
-  
+  padding: 10%;
+  height: 8vh;
+  width: 8vw;
 }
 table{
   display: flex;
   justify-content:space-around;
   text-align: center;
+  padding: 2%;
 }
 #newMeetingButton, #submitFilter{
   color: orangered;
@@ -75,7 +86,7 @@ table{
   margin: 1%;
   float: inline;
 }
-#buttonEdit{
+#buttonEdit,.show-modal{
     padding-right: 15%;
     padding-left: 15%;
 }
@@ -183,6 +194,7 @@ display: none;
 #diary{
   border:5px double orangered;
   margin: 3%;
+  width: 100%;
 }
 .automaticInput{
   background-color: white;

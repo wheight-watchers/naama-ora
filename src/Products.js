@@ -58,7 +58,7 @@ function clearProducts() {
 
   document.getElementById("ingredients").innerHTML = ""
 }
-let arrProductsName = []
+arrProductsName = []
 function CreateArrayOfAllProductsName() {
   i = 0;
   index = 0

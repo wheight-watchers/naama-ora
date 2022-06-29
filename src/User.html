@@ -33,10 +33,30 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <span class="close">&times;</span>
+                        <h2>your daily summary</h2>
                     </div>
                     <div class="modal-body">
+                        <form>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text" id="inputGroup-sizing-lg">DATE:</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-lg" name="date" id="dateInput">
+                            </div>
+                            <div>
+                                <h4>Breakfast</h4>
+                                <div id="Breakfast_inputs"></div>
+                                <h4>Lunch</h4>
+                                <div id="Lunch_inputs"></div>
+                                <h4>Dinner</h4>
+                                <div id="Dinner_inputs"></div>
+                                <h4>Intermediate snack</h4>
+                                <div id="IntermediateSnack_inputs"></div>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
+                        <button class="btn btn-outline-warning" onclick="addDayToDiary()"
+                            id="addDayToDiary">SAVE</button>
                     </div>
                 </div>
 
