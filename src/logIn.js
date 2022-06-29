@@ -4,7 +4,7 @@ const logIn = () => {
   xhr.open("GET", "./db-1655750686617.json");
   xhr.send();
   xhr.onload = () => {
-    if (xhr.status != 200) {
+    if (xhr.status !== 200) {
       alert(`Error ${xhr.status}: ${managerXHR.statusText}`);
     } else {
       let manager = JSON.parse(xhr.response).manager;
@@ -19,8 +19,9 @@ const logIn = () => {
         let users = JSON.parse(xhr.responseText).users;
         console.log(users);
         CurrentUser = users.find((u) => u.email == mail && u.id == pswd);
-        if (CurrentUser != null) {
+        if (CurrentUser) {
           localStorage.setItem("cu", JSON.stringify(CurrentUser));
+          debugger;
           window.location.href = `src/User.html?userId=${CurrentUser.id}`;
         } else alert("user not found");
       }
