@@ -33,9 +33,33 @@
         ]
       },
       "diary": [
-        { "date": "12/04/2020", "summary": 90 },
-        { "date": "13/04/2020", "summary": 80 },
-        { "date": "14/04/2020", "summary": 100 }
+        {
+          "date": "12/04/2020",
+          "summary": [
+            { "Breakfast": ["meet"] },
+            { "Lunch": ["wine", "meet"] },
+            { "Dinner": ["meet"] },
+            { "IntermediateSnack": ["meet"] }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        }
       ]
     },
     {
@@ -64,9 +88,33 @@
         ]
       },
       "diary": [
-        { "date": "12/04/2020", "summary": 90 },
-        { "date": "13/04/2020", "summary": 80 },
-        { "date": "14/04/2020", "summary": 100 }
+        {
+          "date": "12/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        }
       ]
     },
     {
@@ -95,9 +143,33 @@
         ]
       },
       "diary": [
-        { "date": "12/04/2020", "summary": 90 },
-        { "date": "13/04/2020", "summary": 80 },
-        { "date": "14/04/2020", "summary": 100 }
+        {
+          "date": "12/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        }
       ]
     },
     {
@@ -126,9 +198,33 @@
         ]
       },
       "diary": [
-        { "date": "12/04/2020", "summary": 90 },
-        { "date": "13/04/2020", "summary": 80 },
-        { "date": "14/04/2020", "summary": 100 }
+        {
+          "date": "12/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            { "Breakfast": ["roll", "chocolate-milk"] },
+            { "Lunch": ["rice", "meet", "beans"] },
+            { "Dinner": ["baget", "salad", "omlete"] },
+            { "IntermediateSnack": ["coffee", "chocolate", "cookies"] }
+          ]
+        }
       ]
     }
   ]
