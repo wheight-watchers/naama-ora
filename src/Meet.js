@@ -3,7 +3,7 @@ function displayUsersForEnterWeight() {
   dateInput.value = new Date().toLocaleDateString();
   debugger;
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../db-1655750686617.json");
+  xhr.open("GET", "http://localhost:3000/users");
   xhr.send();
   xhr.onload = () => {
     debugger;
@@ -25,14 +25,14 @@ function displayUsersForEnterWeight() {
 function newMeeting() {
   debugger;
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../db-1655750686617.json");
+  xhr.open("GET", "http://localhost:3000/users");
   xhr.send();
   xhr.onload = () => {
     debugger;
     if (xhr.status != 200) {
       alert(`Error ${xhr.status}: ${managerXHR.statusText}`);
     } else {
-      let users = JSON.parse(xhr.responseText).users;
+      let users = JSON.parse(xhr.responseText);
       const meetDate = document.forms.meet.date.value;
       const weights=[]
       users.forEach((u)=>{

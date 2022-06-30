@@ -1,7 +1,8 @@
 async function getUsers() {
-  let url = "../db-1655750686617.json";
+  let url = "http://localhost:3000/users";
   try {
     let res = await fetch(url);
+    //we have to add here a configuration to users
     return await res.json();
   } catch (error) {
     alert(error);
@@ -12,7 +13,7 @@ async function userDetails() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("userId");
   debugger;
-  let users = await getUsers().then((res)=>{return res.users});
+  let users = await getUsers();
   const CurrentUser = users.find((u) => u.id == id);
   // alert(CurrentUser);
   let value1 = CurrentUser.firstName;
@@ -54,8 +55,10 @@ async function userDetails() {
   getDiaryForCurrentuser();
 }
 function directToEditdetails() {
-  window.location.href = "editUser.html";
   debugger;
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("userId");
+  window.location.href = `editUser.html?userId=${id}`;
 }
 function directToProducts() {
   debugger;
@@ -66,7 +69,7 @@ async function edit() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("userId");
   // const res = await fetch("../db-1655750686617.json");
-  const res = await fetch("../db-1655750686617.json");
+  const res = await fetch("http://localhost:3000/users");
   const users = await res.json();
   CurrentUser = users.find((u) => u.id == id);
   // let myData = localStorage["cu"];
@@ -96,8 +99,9 @@ async function saveYourDetails() {
   //let id = JSON.parse(myData).id;
   const params = new URLSearchParams(window.location.search);
   const id = params.get("userId");
-  const res = await fetch("../db-1655750686617.json");
-  const users = await res.json();
+  const users = await fetch("http://localhost:3000/users").then((res=>{
+    return res.json();
+  }))
   CurrentUser = users.find((u) => u.id == id);
   let firstName = document.getElementById("nameInput").value;
   let lastName = document.getElementById("lastNameInput").value;
@@ -110,7 +114,7 @@ async function saveYourDetails() {
 
   alert("your detail update in variable:(");
 
-  window.location.href = "User.html";
+  window.location.href = `User.html?userId=${id}`;
   // let myData = localStorage["cu"];
   // // localStorage.clear();
   // let value1 = JSON.parse(myData).firstName;

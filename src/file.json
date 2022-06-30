@@ -1,66 +1,264 @@
 {
-  "manager": { "id": 212, "first-name": "moshe" ,"last-name":"moshayov","email":"manager@gmail.com","password":"123"},
+  "manager": {
+    "id": 212,
+    "first-name": "Moshe",
+    "last-name": "Moshayov",
+    "email": "manager@gmail.com",
+    "password": "123"
+  },
   "users": [
     {
       "id": 1,
-      "firstName": "reuven",
+      "firstName": "Reuven Hashamen",
       "lastName": "Cohen",
       "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "address": {
+        "city": "Ramat-Gan",
+        "street": "bialic",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Weights": {
-        "startWeight": 60,
+        "startWeight": 121,
         "meetings": [
           {
             "date": "12/04/2020",
-            "weight": 59
+            "weight": 120
           },
           {
             "date": "18/04/2020",
-            "weight": 62
+            "weight": 117
           }
-        ],
-        "diary": [
-          { "date": "12/04/2020", "summary": 90 },
-          { "date": "13/04/2020", "summary": 80 },
-          { "date": "14/04/2020", "summary": 100 }
         ]
-      }
+      },
+      "diary": [
+        {
+          "date": "12/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "meet"
+              ]
+            },
+            {
+              "Lunch": [
+                "wine",
+                "meet"
+              ]
+            },
+            {
+              "Dinner": [
+                "meet"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "meet"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 2,
-      "firstName": "shimon",
+      "firstName": "Shimon",
       "lastName": "Cohen",
-      "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "email": "sc@gmail.com",
+      "address": {
+        "city": "Tel-aviv",
+        "street": "arlozerov",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Weights": {
-        "startWeight": 60,
+        "startWeight": 77,
         "meetings": [
           {
             "date": "12/04/2020",
-            "weight": 59
+            "weight": 75
           },
           {
             "date": "18/04/2020",
-            "weight": 62
+            "weight": 75
           }
-        ],
-        "diary": [
-          { "date": "12/04/2020", "summary": 90 },
-          { "date": "13/04/2020", "summary": 80 },
-          { "date": "14/04/2020", "summary": 100 }
         ]
-      }
+      },
+      "diary": [
+        {
+          "date": "12/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 3,
-      "firstName": "levy",
+      "firstName": "Levy",
       "lastName": "Cohen",
-      "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "email": "lc@gmail.com",
+      "address": {
+        "city": "Tel-aviv",
+        "street": "yafo",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Weights": {
@@ -74,40 +272,234 @@
             "date": "18/04/2020",
             "weight": 62
           }
-        ],
-        "diary": [
-          { "date": "12/04/2020", "summary": 90 },
-          { "date": "13/04/2020", "summary": 80 },
-          { "date": "14/04/2020", "summary": 100 }
         ]
-      }
+      },
+      "diary": [
+        {
+          "date": "12/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 4,
       "firstName": "Yehuda",
       "lastName": "Cohen",
-      "email": "rc@gmail.com",
-      "address": { "city": "Tel-aviv", "street": "arlozerov", "building": 5 },
+      "email": "yc@gmail.com",
+      "address": {
+        "city": "Ramat-Gan",
+        "street": "Harohe",
+        "building": 5
+      },
       "height": 1.7,
       "age": 33,
       "Weights": {
-        "startWeight": 60,
+        "startWeight": 85,
         "meetings": [
           {
             "date": "12/04/2020",
-            "weight": 59
+            "weight": 85
           },
           {
             "date": "18/04/2020",
-            "weight": 62
+            "weight": 83
           }
-        ],
-        "diary": [
-          { "date": "12/04/2020", "summary": 90 },
-          { "date": "13/04/2020", "summary": 80 },
-          { "date": "14/04/2020", "summary": 100 }
         ]
-      }
+      },
+      "diary": [
+        {
+          "date": "12/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "13/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        },
+        {
+          "date": "14/04/2020",
+          "summary": [
+            {
+              "Breakfast": [
+                "roll",
+                "chocolate-milk"
+              ]
+            },
+            {
+              "Lunch": [
+                "rice",
+                "meet",
+                "beans"
+              ]
+            },
+            {
+              "Dinner": [
+                "baget",
+                "salad",
+                "omlete"
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                "coffee",
+                "chocolate",
+                "cookies"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "username": "example",
+      "id": 5
     }
   ]
 }
