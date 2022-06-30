@@ -7,8 +7,9 @@ function getDiaryForCurrentuser() {
   xhr.open("GET", "http://localhost:3000/users");
   xhr.send();
   xhr.onload = () => {
+    debugger;
     if (xhr.status != 200) {
-      alert(`Error ${xhr.status}: ${managerXHR.statusText}`);
+      alert(`Error ${xhr.status}: ${xhr.statusText}`);
     } else {
       let users = JSON.parse(xhr.response);
       let diary;
@@ -197,36 +198,96 @@ span.onclick = function () {
 // };
 function addDayToDiary() {
   debugger;
+  const dateInput = document.getElementById("dateInput").value;
+  let snackArr = [];
+  for (let index = 0; index < numOfInputsForSnack; index++) {
+    debugger;
+    const element = document.getElementById("inputForSnack" + index).value;
+    snackArr.push(element);
+  }
+  let breakfastArr = [];
+  for (let index = 0; index < numOfInputsForBreakfast; index++) {
+    const element = document.getElementById("inputForBreakFast" + index).value;
+    breakfastArr.push(element);
+  }
+  let lunchArr = [];
+  for (let index = 0; index < numOfInputsForLunch; index++) {
+    const element = document.getElementById("inputForLunch" + index).value;
+    lunchArr.push(element);
+  }
+  let dinnertArr = [];
+  for (let index = 0; index < numOfInputsForDinner; index++) {
+    const element = document.getElementById("inputForDinner" + index).value;
+    dinnertArr.push(element);
+  }
 
-  const data = { username: "example" };
-
-  fetch("http://localhost:3000/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      debugger;
-      response.json();
+  const data = {
+    date: dateInput,
+    summary: [
+      {
+        Breakfast: breakfastArr,
+      },
+      {
+        Lunch: lunchArr,
+      },
+      {
+        Dinner: dinnertArr,
+      },
+      {
+        IntermediateSnack: snackArr,
+      },
+    ],
+  };
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("userId");
+  let diary = [];
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost:3000/users");
+  xhr.send();
+  xhr.onload = () => {
+    debugger;
+    if (xhr.status != 200) {
+      alert(`Error ${xhr.status}: ${xhr.statusText}`);
+    } else {
+      let users = JSON.parse(xhr.response);
+      for (let index = 0; index < users.length; index++) {
+        debugger;
+        if (users[index].id == id) {
+          diary = users[index].diary;
+          break;
+        }
+      }
+    }
+    diary[diary.length] = data;
+    fetch(`http://localhost:3000/users/${id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+      body: JSON.stringify({
+        diary: diary,
+      }),
     })
-    .then((data) => {
-      alert("Success:", data);
-    })
-    .catch((error) => {
-      alert("Error:", error);
-    });
+      .then((response) => {
+        debugger;
+        response.json();
+      })
+      .then((data) => {
+        alert("Success:", data);
+      })
+      .catch((error) => {
+        alert("Error:", error);
+      });
 
-  const content_IntermediateSnack_inputs = document.getElementById(
-    "IntermediateSnack_inputs"
-  );
-  content_IntermediateSnack_inputs.innerHTML = "";
-  const content_Dinner_inputs = document.getElementById("Dinner_inputs");
-  content_Dinner_inputs.innerHTML = "";
-  const content_Lunch_inputs = document.getElementById("Lunch_inputs");
-  content_Lunch_inputs.innerHTML = "";
-  const content_Breakfast_inputs = document.getElementById("Breakfast_inputs");
-  content_Breakfast_inputs.innerHTML = "";
-  modal.style.display = "none";
+    const content_IntermediateSnack_inputs = document.getElementById(
+      "IntermediateSnack_inputs"
+    );
+    content_IntermediateSnack_inputs.innerHTML = "";
+    const content_Dinner_inputs = document.getElementById("Dinner_inputs");
+    content_Dinner_inputs.innerHTML = "";
+    const content_Lunch_inputs = document.getElementById("Lunch_inputs");
+    content_Lunch_inputs.innerHTML = "";
+    const content_Breakfast_inputs =
+      document.getElementById("Breakfast_inputs");
+    content_Breakfast_inputs.innerHTML = "";
+    modal.style.display = "none";
+  };
 }

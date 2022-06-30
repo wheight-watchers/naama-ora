@@ -122,6 +122,32 @@
               ]
             }
           ]
+        },
+        {
+          "date": "1.7.2022",
+          "summary": [
+            {
+              "Breakfast": [
+                "dddd",
+                ""
+              ]
+            },
+            {
+              "Lunch": [
+                ""
+              ]
+            },
+            {
+              "Dinner": [
+                ""
+              ]
+            },
+            {
+              "IntermediateSnack": [
+                ""
+              ]
+            }
+          ]
         }
       ]
     },
@@ -496,10 +522,6 @@
           ]
         }
       ]
-    },
-    {
-      "username": "example",
-      "id": 5
     }
   ]
 }

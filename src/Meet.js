@@ -10,7 +10,7 @@ function displayUsersForEnterWeight() {
     if (xhr.status != 200) {
       alert(`Error ${xhr.status}: ${managerXHR.statusText}`);
     } else {
-      let users = JSON.parse(xhr.responseText).users;
+      let users = JSON.parse(xhr.responseText);
       const usersContainer = document.getElementById("usersWeightsForMeet");
       users.forEach((u) => {
         debugger;
