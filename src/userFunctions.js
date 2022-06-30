@@ -52,6 +52,7 @@ async function userDetails() {
   document.getElementById("StartingWeight").innerHTML +=
     "\xa0\xa0\xa0" + value10;
   // };
+  debugger;
   getDiaryForCurrentuser();
 }
 function directToEditdetails() {
