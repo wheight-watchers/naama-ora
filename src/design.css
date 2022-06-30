@@ -53,6 +53,7 @@ table{
   justify-content:space-around;
   text-align: center;
   padding: 2%;
+  margin: 0;
 }
 #newMeetingButton, #submitFilter{
   color: orangered;
@@ -83,7 +84,7 @@ table{
   color:white;
   text-align: center;
   border:1px solid white;
-  margin: 1%;
+  margin: 0.5%;
   float: inline;
 }
 #buttonEdit,.show-modal{

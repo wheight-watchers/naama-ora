@@ -1,5 +1,5 @@
 let start = 0;
-const configUrl = "../db-1655750686617.json";
+const configUrl = "http://localhost:3000/users";
 function getParams() {
   debugger;
   const params = new URLSearchParams(window.location.search);
@@ -8,7 +8,7 @@ function getParams() {
   xhr.open("GET", configUrl);
   xhr.send();
   xhr.onload = () => {
-    let users = JSON.parse(xhr.responseText).users;
+    let users = JSON.parse(xhr.responseText);
     CurrentUser = users.find((u) => u.id == id);
     document.getElementById(
       "userDetails"
@@ -18,14 +18,15 @@ function getParams() {
     ).innerHTML += `<h4>firstName: ${CurrentUser.firstName}</h4> 
       <h4>lastName: ${CurrentUser.lastName}</h4>
       <h4>email: ${CurrentUser.email}</h4>
-    <h4>address : </h4>
+    <h4>address : 
       ${CurrentUser.address.street}
-      ${CurrentUser.address.building}
+      ${CurrentUser.address.building},
       ${CurrentUser.address.city}
+      </h4>
       <h4>age: ${CurrentUser.age}</h4> 
       <h4>height: ${CurrentUser.height}</h4>
       <h4>start Weight: ${CurrentUser.Weights.startWeight}</h4> 
-    <h2>meetings:</h2>`;
+    <h3>meetings:</h3>`;
     const meet = CurrentUser.Weights.meetings;
     // let table=document.createElement("table")
     // let title=document.createElement("tr");
@@ -70,8 +71,8 @@ function getUsersForManager() {
       if (xhr.status != 200) {
         alert(`Error ${xhr.status}: ${xhr.statusText}`);
       } else {
-        let jsonusers = JSON.parse(xhr.responseText).users;
-        let userMeetings = JSON.parse(xhr.responseText).users[0].Weights
+        let jsonusers = JSON.parse(xhr.responseText);
+        let userMeetings = jsonusers[0].Weights
           .meetings;
         numOfmeetings = Object.keys(userMeetings).length;
         console.log(jsonusers);
@@ -178,6 +179,7 @@ function directMyDetails(user) {
   // let url = new URL("localHost:8080/Details.html");
   // url.searchParams.set("id", user.id);
   // window.location.href =url.href;
+
   window.location.href = `Details.html?id=${user.id}`;
 }
 function filterUsers() {

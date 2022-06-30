@@ -4,13 +4,13 @@ function getDiaryForCurrentuser() {
   const id = params.get("userId");
   //   alert("user id: " + id);
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "../db-1655750686617.json");
+  xhr.open("GET", "http://localhost:3000/users");
   xhr.send();
   xhr.onload = () => {
     if (xhr.status != 200) {
       alert(`Error ${xhr.status}: ${managerXHR.statusText}`);
     } else {
-      let users = JSON.parse(xhr.response).users;
+      let users = JSON.parse(xhr.response);
       let diary;
       for (let index = 0; index < users.length; index++) {
         debugger;
@@ -110,7 +110,7 @@ btn.onclick = function () {
 numOfInputsForBreakfast = 0;
 function addInputForBreakfast() {
   debugger;
-  let lastNum=numOfInputsForBreakfast-1;
+  let lastNum = numOfInputsForBreakfast - 1;
   let lastInput = document.getElementById("inputForBreakFast" + lastNum);
   if (!lastInput || lastInput.value !== "") {
     if (lastInput) {
@@ -129,7 +129,7 @@ function addInputForBreakfast() {
 numOfInputsForLunch = 0;
 function addInputForLunch() {
   debugger;
-  let lastNum=numOfInputsForLunch-1;
+  let lastNum = numOfInputsForLunch - 1;
   let lastInput = document.getElementById("inputForLunch" + lastNum);
   if (!lastInput || lastInput.value !== "") {
     if (lastInput) {
@@ -148,7 +148,7 @@ function addInputForLunch() {
 numOfInputsForDinner = 0;
 function addInputForDinner() {
   debugger;
-  let lastNum=numOfInputsForDinner-1;
+  let lastNum = numOfInputsForDinner - 1;
   let lastInput = document.getElementById("inputForDinner" + lastNum);
   if (!lastInput || lastInput.value !== "") {
     if (lastInput) {
@@ -167,7 +167,7 @@ function addInputForDinner() {
 numOfInputsForSnack = 0;
 function addInputForSnack() {
   debugger;
-  let lastNum=numOfInputsForSnack-1;
+  let lastNum = numOfInputsForSnack - 1;
   let lastInput = document.getElementById("inputForSnack" + lastNum);
   if (!lastInput || lastInput.value !== "") {
     if (lastInput) {
@@ -183,7 +183,6 @@ function addInputForSnack() {
   }
 }
 
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
   modal.style.display = "none";
@@ -198,7 +197,27 @@ span.onclick = function () {
 // };
 function addDayToDiary() {
   debugger;
-  const content_IntermediateSnack_inputs = document.getElementById("IntermediateSnack_inputs");
+
+  const data = { username: "example" };
+
+  fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert("Success:", data);
+    })
+    .catch((error) => {
+      alert("Error:", error);
+    });
+
+  const content_IntermediateSnack_inputs = document.getElementById(
+    "IntermediateSnack_inputs"
+  );
   content_IntermediateSnack_inputs.innerHTML = "";
   const content_Dinner_inputs = document.getElementById("Dinner_inputs");
   content_Dinner_inputs.innerHTML = "";
