@@ -71,6 +71,7 @@ function getUsersForManager() {
       if (xhr.status != 200) {
         alert(`Error ${xhr.status}: ${xhr.statusText}`);
       } else {
+        debugger;
         let jsonusers = JSON.parse(xhr.responseText);
         let userMeetings = jsonusers[0].Weights
           .meetings;

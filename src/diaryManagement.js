@@ -207,7 +207,10 @@ function addDayToDiary() {
     },
     body: JSON.stringify(data),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      debugger;
+      response.json();
+    })
     .then((data) => {
       alert("Success:", data);
     })
