@@ -48,7 +48,9 @@ function searchProducts() {
 function clearProducts() {
   document.getElementById("ingredients").innerHTML = "";
 }
-arrProductsName = [];
+if(true){
+  let arrProductsName = [];
+}
 function CreateArrayOfAllProductsName() {
   i = 0;
   index = 0;
@@ -81,8 +83,8 @@ function CreateArrayOfAllProductsName() {
     });
 }
 async function AutomaticSearchResults() {
-  arrProductsName = [];
   debugger;
+  let arrProductsName = [];
   arrProductsName = JSON.parse(localStorage.getItem("arrProductsName"));
 
   document.getElementById("resultAutomatic").innerHTML = "";
