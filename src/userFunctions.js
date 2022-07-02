@@ -42,11 +42,10 @@ async function userDetails() {
   document.getElementById("user").innerHTML += value1;
   document.getElementById("name").innerHTML += value1 + " " + value2;
   document.getElementById("email").innerHTML += value3;
-  document.getElementById("age&height").innerHTML += `<h4>${
-    value8 +
+  document.getElementById("age&height").innerHTML += `<h4>${value8 +
     "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +
     value9
-  }</h4>`;
+    }</h4>`;
   document.getElementById("address").innerHTML +=
     value6 + " " + value7 + " , " + value5;
   document.getElementById("StartingWeight").innerHTML +=
@@ -94,12 +93,13 @@ async function edit() {
   document.getElementById("ageInput").value = value8;
   document.getElementById("heightInput").value = value9;
 }
+
 async function saveYourDetails() {
   debugger;
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("userId");
-  const users = await fetch("http://localhost:3000/users").then((res=>{
+  const users = await fetch("http://localhost:3000/users").then((res => {
     return res.json();
   }))
   CurrentUser = users.find((u) => u.id == id);
@@ -116,46 +116,46 @@ async function saveYourDetails() {
 
 
   debugger
-  const data=
-    {
-     id: CurrentUser.id,
-      "firstName":firstName,
-      "lastName":lastName,
-      "email": email,
-      "address":{
-        "city": city,
-        "street":street,
-        "building":building
-      },
-      "height": height,
-      "age": age,
-      "Weights":CurrentUser.Weights,
-      "diary":CurrentUser.diary
-    }
-  
-  
-    fetch(`http://localhost:3000/users/${id}`, {
-          
-      method: 'PUT',
-    
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+  const data =
+  {
+    id: CurrentUser.id,
+    "firstName": firstName,
+    "lastName": lastName,
+    "email": email,
+    "address": {
+      "city": city,
+      "street": street,
+      "building": building
+    },
+    "height": height,
+    "age": age,
+    "Weights": CurrentUser.Weights,
+    "diary": CurrentUser.diary
+  }
+
+
+  fetch(`http://localhost:3000/users/${id}`, {
+
+    method: 'PUT',
+
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => response.json())
-    
+
     .then((data) => {
       console.log('Success:', data);
       window.location.href = `User.html?userId=${id}`;
     })
-    
+
     .catch((error) => {
       console.error('Error:', error);
     });
-  
-  
 
 
+
+  }
 
 
