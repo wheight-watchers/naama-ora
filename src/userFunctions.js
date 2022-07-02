@@ -117,7 +117,6 @@ async function saveYourDetails() {
 
   window.location.href = `User.html?userId=${id}`;
   // let myData = localStorage["cu"];
-  // // localStorage.clear();
   // let value1 = JSON.parse(myData).firstName;
   // let value2 = JSON.parse(myData).lastName;
   // let value3 = JSON.parse(myData).email;

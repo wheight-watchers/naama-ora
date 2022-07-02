@@ -1,5 +1,6 @@
 function searchProducts() {
   document.getElementById("load").style.display = "block";
+  document.getElementById("resultAutomatic").innerHTML = "";
   document.getElementById("ingredients").innerHTML = "";
   const options = {
     method: "GET",
@@ -145,7 +146,7 @@ function CreateArrayOfAllProductsName() {
       console.log(arrProductsName.length);
       debugger;
       localStorage.setItem("arrProductsName", JSON.stringify(arrProductsName));
-      // document.getElementById("buttonEdit").style.display = "block";
+      document.getElementById("buttonEdit").style.display = "inline";
     });
 }
 async function AutomaticSearchResults() {
@@ -153,14 +154,20 @@ async function AutomaticSearchResults() {
   debugger;
   arrProductsName = JSON.parse(localStorage.getItem("arrProductsName"));
 
+  document.getElementById("ingredients").innerHTML = "";
   document.getElementById("resultAutomatic").innerHTML = "";
   const inputValue = document.getElementById("productName").value;
 
   console.log(arrProductsName.length);
 
   debugger;
-
-  for (i = 0; i < 500; i++) {
+ setTimeout(
+  autoComplete(inputValue)
+ ,0)
+  
+}
+function autoComplete(inputValue){
+  for (let i = 0; i < 500; i++) {
     debugger;
     if (arrProductsName[i].includes(inputValue) == true) {
       document.getElementById("resultAutomatic").innerHTML +=
@@ -169,7 +176,6 @@ async function AutomaticSearchResults() {
     }
   }
 }
-
 function valueToInput(val) {
   debugger;
   console.log(val);
