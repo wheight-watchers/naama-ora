@@ -263,10 +263,10 @@
       "address": {
         "city": "Tel-aviv",
         "street": "yafo",
-        "building": 5
+        "building": "5"
       },
-      "height": 1.7,
-      "age": 33,
+      "height": "1.7",
+      "age": "33",
       "Weights": {
         "startWeight": 60,
         "meetings": [

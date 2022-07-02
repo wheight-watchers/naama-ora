@@ -57,7 +57,7 @@ async function userDetails() {
 function directToEditdetails() {
   debugger;
   const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+  const id = params.get("userId");
   window.location.href = `editUser.html?userId=${id}`;
 }
 function directToProducts() {
