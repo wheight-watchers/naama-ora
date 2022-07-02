@@ -9,26 +9,26 @@
   "users": [
     {
       "id": 1,
-      "firstName": "Reuven Hashamen",
-      "lastName": "Cohen",
+      "firstName": "Naama",
+      "lastName": "choen",
       "email": "rc@gmail.com",
       "address": {
-        "city": "Ramat-Gan",
+        "city": "maale-Adumim",
         "street": "bialic",
-        "building": 5
+        "building": "5"
       },
-      "height": 1.7,
-      "age": 33,
+      "height": "1.7",
+      "age": "33",
       "Weights": {
-        "startWeight": 121,
+        "startWeight": 77,
         "meetings": [
           {
             "date": "12/04/2020",
-            "weight": 120
+            "weight": 75
           },
           {
             "date": "18/04/2020",
-            "weight": 117
+            "weight": 75
           }
         ]
       },
@@ -38,23 +38,29 @@
           "summary": [
             {
               "Breakfast": [
-                "meet"
+                "roll",
+                "chocolate-milk"
               ]
             },
             {
               "Lunch": [
-                "wine",
-                "meet"
+                "rice",
+                "meet",
+                "beans"
               ]
             },
             {
               "Dinner": [
-                "meet"
+                "baget",
+                "salad",
+                "omlete"
               ]
             },
             {
               "IntermediateSnack": [
-                "meet"
+                "coffee",
+                "chocolate",
+                "cookies"
               ]
             }
           ]
@@ -119,32 +125,6 @@
                 "coffee",
                 "chocolate",
                 "cookies"
-              ]
-            }
-          ]
-        },
-        {
-          "date": "1.7.2022",
-          "summary": [
-            {
-              "Breakfast": [
-                "dddd",
-                ""
-              ]
-            },
-            {
-              "Lunch": [
-                ""
-              ]
-            },
-            {
-              "Dinner": [
-                ""
-              ]
-            },
-            {
-              "IntermediateSnack": [
-                ""
               ]
             }
           ]
