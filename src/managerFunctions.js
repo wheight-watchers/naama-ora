@@ -3,7 +3,7 @@ const configUrl = "http://localhost:3000/users";
 function getParams() {
   debugger;
   const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+  const id = params.get("userId");
   const xhr = new XMLHttpRequest();
   xhr.open("GET", configUrl);
   xhr.send();
