@@ -181,7 +181,7 @@ function directMyDetails(user) {
   // url.searchParams.set("id", user.id);
   // window.location.href =url.href;
 
-  window.location.href = `Details.html?id=${user.id}`;
+  window.location.href = `Details.html?userId=${user.id}`;
 }
 function filterUsers() {
   debugger;
