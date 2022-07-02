@@ -96,8 +96,7 @@ async function edit() {
 }
 async function saveYourDetails() {
   debugger;
-  //let myData = localStorage["cu"];
-  //let id = JSON.parse(myData).id;
+
   const params = new URLSearchParams(window.location.search);
   const id = params.get("userId");
   const users = await fetch("http://localhost:3000/users").then((res=>{
@@ -107,74 +106,56 @@ async function saveYourDetails() {
   let firstName = document.getElementById("nameInput").value;
   let lastName = document.getElementById("lastNameInput").value;
   let email = document.getElementById("emailInput").value;
-  let city = document.getElementById("addressCityInput");
+  let city = document.getElementById("addressCityInput").value;
   let street = document.getElementById("addressStreetInput").value;
   let building = document.getElementById("addressBuildingInput").value;
   let age = document.getElementById("ageInput").value;
   let height = document.getElementById("heightInput").value;
 
-  alert("your detail update in variable:(");
 
-  window.location.href = `User.html?userId=${id}`;
-  // let myData = localStorage["cu"];
-  // let value1 = JSON.parse(myData).firstName;
-  // let value2 = JSON.parse(myData).lastName;
-  // let value3 = JSON.parse(myData).email;
-  // let value5 = JSON.parse(myData).address.city;
-  // let value6 = JSON.parse(myData).address.street;
-  // let value7 = JSON.parse(myData).address.building;
-  // let value8 = JSON.parse(myData).age;
-  // let value9 = JSON.parse(myData).height;
-  // let value10 = JSON.parse(myData).Weights.startWeight;
-  // let meet = JSON.parse(myData).Weights.meetings;
-  // console.log(meet);
-  // meet.forEach((m) => {
-  //   debugger;
-  //   document.getElementById("meeting").innerHTML +=
-  //     "     date:         " + m.date;
-  //   document.getElementById("meeting").innerHTML +=
-  //     "                          ";
-  //   document.getElementById("meeting").innerHTML +=
-  //     "      weight:        " + m.weight;
-  //   document.getElementById("meeting").innerHTML += `</br>`;
-  // });
 
-  // document.getElementById("user").innerHTML += value1;
-  // document.getElementById("name").innerHTML = value1 + " " + value2;
-  // document.getElementById("email").innerHTML = value3;
-  // document.getElementById("height").innerHTML = value9;
-  // document.getElementById("age").innerHTML = value8;
-  // document.getElementById("address").innerHTML =
-  //   value6 + " " + value7 + " " + value5;
-  // document.getElementById("StartingWeight").innerHTML = value10;
-}
-// async function edit() {
-//   debugger;
-//   let myData = localStorage["cu"];
-//   // localStorage.clear();
-//   let value1 = JSON.parse(myData).firstName;
-//   let value2 = JSON.parse(myData).lastName;
-//   let value3 = JSON.parse(myData).email;
-//   let value5 = JSON.parse(myData).address.city;
-//   let value6 = JSON.parse(myData).address.street;
-//   let value7 = JSON.parse(myData).address.building;
-//   let value8 = JSON.parse(myData).age;
-//   let value9 = JSON.parse(myData).height;
 
-//   document.getElementById("name").nameInput += "hello " + value1;
-//   document.getElementById("nameInput").value = value1;
-//   document.getElementById("lastNameInput").value = value2;
-//   document.getElementById("emailInput").value = value3;
-//   document.getElementById("addressCityInput").value = value5;
-//   document.getElementById("addressStreetInput").value = value6;
-//   document.getElementById("addressBuildingInput").value = value7;
-//   document.getElementById("ageInput").value = value8;
-//   document.getElementById("heightInput").value = value9;
-// }
+  debugger
+  const data=
+    {
+     id: CurrentUser.id,
+      "firstName":firstName,
+      "lastName":lastName,
+      "email": email,
+      "address":{
+        "city": city,
+        "street":street,
+        "building":building
+      },
+      "height": height,
+      "age": age,
+      "Weights":CurrentUser.Weights,
+      "diary":CurrentUser.diary
+    }
+  
+  
+    fetch(`http://localhost:3000/users/${id}`, {
+          
+      method: 'PUT',
+    
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    
+    .then((data) => {
+      console.log('Success:', data);
+      window.location.href = `User.html?userId=${id}`;
+    })
+    
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  
+  
 
-// function directToDiaryManagement() {
-//   debugger;
-//   const params = new URLSearchParams(window.location.search);
-//   const id = params.get("userId");
-//   window.location.href = `diaryManagement.html?id=${id}`;
-// }
+
+
+
