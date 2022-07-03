@@ -140,7 +140,8 @@ function CreateArrayOfAllProductsName() {
     })
     .then((data) => {
       data.forEach((d) => {
-        arrProductsName.push(d.shmmitzrach);
+  
+        arrProductsName=[...arrProductsName,d.shmmitzrach]
       });
       debugger;
       console.log(arrProductsName.length);
