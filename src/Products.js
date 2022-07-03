@@ -49,7 +49,7 @@ function searchProducts() {
 function clearProducts() {
   document.getElementById("ingredients").innerHTML = "";
 }
-if(true){
+if (true) {
   let arrProductsName = [];
 }
 function CreateArrayOfAllProductsName() {
@@ -161,21 +161,32 @@ async function AutomaticSearchResults() {
   console.log(arrProductsName.length);
 
   debugger;
- setTimeout(
-  autoComplete(inputValue)
- ,0)
-  
-}
-function autoComplete(inputValue){
-  for (let i = 0; i < 500; i++) {
-    debugger;
-    if (arrProductsName[i].includes(inputValue) == true) {
-      document.getElementById("resultAutomatic").innerHTML +=
-        `<button class="automaticInput" id="b${i}" onclick="valueToInput(this.id)">${arrProductsName[i]}</button>` +
-        `<br></br>`;
-    }
+  let terms = autoComplete(inputValue);
+  debugger
+  let list = '';
+  for (i=0; i<terms.length; i++) {
+    list+=`<button class="automaticInput" id="b${i}" onclick="valueToInput(this.id)"> ${terms[i]} </button>`+`<br>`
+    
   }
+  resultAutomatic.innerHTML = `<ul> ${list} </ul>`;
+
+
 }
+
+function autoComplete(inputValue) {
+  if (inputValue === '') {
+    return [];
+  }
+  let reg = new RegExp(inputValue)
+  return arrProductsName.filter(function(term) {
+    if (term.match(reg)) {
+      return term;
+    }
+  });
+}
+
+
+
 function valueToInput(val) {
   debugger;
   console.log(val);
