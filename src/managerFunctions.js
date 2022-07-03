@@ -194,34 +194,36 @@ function filterUsers() {
     } else {
       // alert(JSON.parse(xhr.responseText));
       const text = document.getElementById("searchByFreeTextInput").value;
-      const biggerThanWeight =
-        document.getElementById("biggerThanWeight").value;
-      const lowerThanWeight = document.getElementById("lowerThanWeight").value;
+      let biggerThanWeight =
+        document.getElementById("biggerThanWeight").valueAsNumber;
+      let lowerThanWeight = document.getElementById("lowerThanWeight").valueAsNumber;
       const lostOrGained = document.getElementById("select_lost/gained").value;
       const from = document.getElementById("select_from").value;
-      const lowerThanBMI = document.getElementById("lowerThanBMI").value;
-      const biggerThanBMI = document.getElementById("biggerThanBMI").value;
+      let lowerThanBMI = document.getElementById("lowerThanBMI").valueAsNumber;
+      let biggerThanBMI = document.getElementById("biggerThanBMI").valueAsNumber;
       const s = document.getElementById("streetSelect");
       const streetSelect = s.options[s.selectedIndex].outerText;
       const c = document.getElementById("citySelect");
       const citySelect = c.options[c.selectedIndex].outerText;
-      let users = JSON.parse(xhr.responseText).users;
-      let userMeetings = JSON.parse(xhr.responseText).users[0].Weights.meetings;
+      let users = JSON.parse(xhr.responseText);
+      let userMeetings = users[0].Weights.meetings;
       numOfmeetings = Object.keys(userMeetings).length;
+      debugger;
       if (text != "") {
         users = filterByText(users, text);
       }
-      if (biggerThanWeight != "" || lowerThanWeight != "") {
-        if (biggerThanWeight == "") biggerThanWeight = 0;
-        if (lowerThanWeight == "") lowerThanWeight = 200;
+      if (biggerThanWeight  || lowerThanWeight ) {
+        if (!biggerThanWeight ) biggerThanWeight = 0;
+        if (!lowerThanWeight) lowerThanWeight = 200;
         users = filterByWeight(users, biggerThanWeight, lowerThanWeight);
       }
       if (lostOrGained != "lost/gained" && from != "from") {
         users = filterByGainedOrLost(users, lostOrGained, from, numOfmeetings);
       }
       if (lowerThanBMI != "" || biggerThanBMI != "") {
-        if (lowerThanBMI == "") lowerThanBMI = 200;
-        if (biggerThanBMI == "") biggerThanBMI = 0;
+        debugger;
+        if (!lowerThanBMI) lowerThanBMI = 200;
+        if (!biggerThanBMI) biggerThanBMI = 0;
         users = filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings);
       }
       if (streetSelect != "street" || citySelect != "city") {
@@ -254,6 +256,7 @@ function filterByText(users, text) {
 }
 function filterByWeight(users, biggerThanWeight, lowerThanWeight) {
   users = users.filter((u) => {
+    debugger;
     let userWheight = u.Weights.meetings[numOfmeetings - 1].weight;
     return userWheight > biggerThanWeight && userWheight < lowerThanWeight;
   });
@@ -293,9 +296,10 @@ function filterByGainedOrLost(users, lostOrGained, from, numOfmeetings) {
   return users;
 }
 function filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings) {
+  debugger;
   let bmi;
   users = users.filter((u) => {
-    bmi = u.Weights.meetings[numOfmeetings - 1].weight / (u.height * u.height);
+    bmi = u.Weights.meetings[numOfmeetings - 1].weight / (u.height **2);
     return bmi < lowerThanBMI && bmi > biggerThanBMI;
   });
   return users;
