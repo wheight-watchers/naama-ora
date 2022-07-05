@@ -1,4 +1,7 @@
-
+const fs= require('fs')
+const dataFromFile=fs.readFileSync('../../Client/file.json');
+let data=JSON.parse(dataFromFile)
+console.log(data)
 
 async function getAllTheMeetings(){
 
