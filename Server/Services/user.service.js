@@ -1,3 +1,4 @@
+
 const { post } = require('../Controllers/user.controller');
 const UserModel = require('../models/user.model');
 
@@ -21,3 +22,4 @@ const updateUser = async (id,newUser) => {
 module.exports = {
     addUser,getUsersList,getUser,deleteUser,updateUser
 }
+
