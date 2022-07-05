@@ -7,7 +7,7 @@ const router=express.Router();
 router.get('/',controller.getAllUsers);
 router.get('/:id',controller.getUserById);
 router.post('/',controller.addUser);
-router.put('/',controller.updateUserDetails);
+router.put('/:id',controller.updateUserDetails);
 router.delete('/:id',controller.removeUser);
 
 module.exports=router;
