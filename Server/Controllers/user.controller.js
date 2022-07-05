@@ -5,7 +5,7 @@ module.exports.getAllUsers= async (req, res, next) => {
     //return a list of users
     try{
         const users=await UserService.getUsersList();
-        res.send(users);
+        res.json(users);
     }
     catch(err){
         next(err)
