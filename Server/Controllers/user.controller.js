@@ -38,7 +38,7 @@ module.exports.updateUserDetails= async (req, res, next) => {
 
     //update user details
     try{
-        const users=await UserService.updateUser(req.body);
+        const users=await UserService.updateUser(req.params.id,req.body);
         res.send(user);
     }
     catch(err){

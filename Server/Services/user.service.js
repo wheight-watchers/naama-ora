@@ -8,13 +8,13 @@ const addUser = async (name, email, password) => {
 const getUsersList = async () => {
     UserModel;
 };
-const getUser = async () => {
+const getUser = async (id) => {
     UserModel;
 };
-const deleteUser = async () => {
+const deleteUser = async (id) => {
     UserModel;
 };
-const updateUser = async () => {
+const updateUser = async (id,newUser) => {
     UserModel;
 };
 
