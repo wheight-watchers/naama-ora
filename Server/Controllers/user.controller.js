@@ -11,6 +11,10 @@ module.exports.getAllUsers= async (req, res, next) => {
         next(err)
     }
 }
+module.exports.userSearch= async (req, res, next) => {
+
+    
+}
 module.exports.getUserById= async (req, res, next) => {
 
     //return a specific user
