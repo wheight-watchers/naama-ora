@@ -7,19 +7,22 @@ myData=JSON.parse(dateFromFile);
 
 const addUser = async (name, email, password) => {
     const user=new UserModel(name, email, password);
-    UserModel.add(user);
+    // UserModel.add(user);
+    myData=[...myData,user]
 };
 const getUsersList = async () => {
     return await myData.users;
 };
 const getUser = async (id) => {
-    UserModel;
+    return await myData.users.find((user)=>user.id===id)
 };
 const deleteUser = async (id) => {
-    UserModel;
+    myData=myData.users.filter((user)=>user.id!==id)
 };
 const updateUser = async (id,newUser) => {
-    UserModel;
+    myData=myData.map((user)=>{
+       return user.id===id?newUser:user
+    })
 };
 
 module.exports = {
