@@ -11,7 +11,6 @@ const port = process.env.port || 3000;
 app.use(express.json());
 app.use("/users", userRouter);
 app.use("/meeting", authMiddleware, meetingRouter);
-app.use("/diary", authMiddleware, diaryRouter);
 app.use("/account", authMiddleware, accountRouter);
 
 app.listen(port, () => {
