@@ -28,15 +28,6 @@ function getParams() {
       <h4>start Weight: ${CurrentUser.Weights.startWeight}</h4> 
     <h3>meetings:</h3>`;
     const meet = CurrentUser.Weights.meetings;
-    // let table=document.createElement("table")
-    // let title=document.createElement("tr");
-    // let subject1=document.createElement("td");
-    // subject1.innerText="Date";
-    // title.appendChild(subject1);
-    // let subject2=document.createElement("td");
-    // subject2.innerText="Weight"
-    // title.appendChild(subject2);
-    // table.append(title);
     let table = `<table>
     <tr>
     <th>Date  </th>
@@ -48,14 +39,6 @@ function getParams() {
          <td>${m.date + "   "}</td>
         <td>${m.weight}</td>
         </tr></br>`;
-      // let tr=document.createElement("tr");
-      // let td1=document.createElement("td");
-      // td1.innerText=m.date + "   ";
-      // tr.appendChild(td1);
-      // let td2=document.createElement("td");
-      // td2.innerText=m.weight;
-      // tr.appendChild(td2);
-      // table.append(tr);
     });
     table += `</table>`;
     document.getElementById("userDetails").innerHTML += table;
@@ -73,8 +56,7 @@ function getUsersForManager() {
       } else {
         debugger;
         let jsonusers = JSON.parse(xhr.responseText);
-        let userMeetings = jsonusers[0].Weights
-          .meetings;
+        let userMeetings = jsonusers[0].Weights.meetings;
         numOfmeetings = Object.keys(userMeetings).length;
         console.log(jsonusers);
         let cities = [];
@@ -196,11 +178,13 @@ function filterUsers() {
       const text = document.getElementById("searchByFreeTextInput").value;
       let biggerThanWeight =
         document.getElementById("biggerThanWeight").valueAsNumber;
-      let lowerThanWeight = document.getElementById("lowerThanWeight").valueAsNumber;
+      let lowerThanWeight =
+        document.getElementById("lowerThanWeight").valueAsNumber;
       const lostOrGained = document.getElementById("select_lost/gained").value;
       const from = document.getElementById("select_from").value;
       let lowerThanBMI = document.getElementById("lowerThanBMI").valueAsNumber;
-      let biggerThanBMI = document.getElementById("biggerThanBMI").valueAsNumber;
+      let biggerThanBMI =
+        document.getElementById("biggerThanBMI").valueAsNumber;
       const s = document.getElementById("streetSelect");
       const streetSelect = s.options[s.selectedIndex].outerText;
       const c = document.getElementById("citySelect");
@@ -212,8 +196,8 @@ function filterUsers() {
       if (text != "") {
         users = filterByText(users, text);
       }
-      if (biggerThanWeight  || lowerThanWeight ) {
-        if (!biggerThanWeight ) biggerThanWeight = 0;
+      if (biggerThanWeight || lowerThanWeight) {
+        if (!biggerThanWeight) biggerThanWeight = 0;
         if (!lowerThanWeight) lowerThanWeight = 200;
         users = filterByWeight(users, biggerThanWeight, lowerThanWeight);
       }
@@ -299,7 +283,7 @@ function filterByBMI(users, biggerThanBMI, lowerThanBMI, numOfmeetings) {
   debugger;
   let bmi;
   users = users.filter((u) => {
-    bmi = u.Weights.meetings[numOfmeetings - 1].weight / (u.height **2);
+    bmi = u.Weights.meetings[numOfmeetings - 1].weight / u.height ** 2;
     return bmi < lowerThanBMI && bmi > biggerThanBMI;
   });
   return users;
