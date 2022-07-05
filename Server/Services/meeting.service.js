@@ -1,18 +1,18 @@
 
 
-function getAllTheMeetings(){
+async function getAllTheMeetings(){
 
 }
-function getMeetingById(id){
+async function getMeetingById(id){
 
 }
-function addMeeting(meeting){
+async function addMeeting(meeting){
 
 }
-function updateMeeting(id,meeting){
+async function updateMeeting(id,meeting){
 
 }
-function deleteMeeting(id){
+async function deleteMeeting(id){
 
 }
 module.exports={
