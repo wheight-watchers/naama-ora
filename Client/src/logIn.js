@@ -28,7 +28,7 @@ const logIn = () => {
             console.log(users);
             CurrentUser = users.find((u) => u.email == mail && u.id == pswd);
             if (CurrentUser) {
-              localStorage.setItem("cu", JSON.stringify(CurrentUser));
+              localStorage.setItem("cu", JSON.stringify(CurrentUser));//זה רק בנוסף
               debugger;
               window.location.href = `src/User.html?userId=${CurrentUser.id}`;
             } else alert("user not found");
