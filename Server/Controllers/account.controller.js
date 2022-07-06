@@ -6,7 +6,10 @@ module.exports.login = async (req, res, next) => {
       req.params.email,
       req.params.password
     );
-    res.send(user);
+    if(!user){
+        res.status(400).json({msg:`member with id ${req.params.id} not found!`})
+    }
+    else res.json(user);
   } catch (err) {
     next(err);
   }
