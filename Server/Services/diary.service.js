@@ -46,29 +46,31 @@ async function updateDiary(userId, dairyId, diary) {
 
 }
 async function deleteDairy(userId, dairyId) {
-   const data = await getData();
+   const users = await getData();
    // if (!data) {
    //    throw new Error('not found user to delete..');
    // }
-   const indexOfUser = await users.findIndex((user) => user.id === id);
-   
-   const dataForThisUser = await data.forEach((u) => { if (u.id === userId) { dataForThisUser = [...dataForThisUser, u] } });
-   const indexOfThisUser = await data.findIndex(u => u.id === userId)
-   const _diary = dataForThisUser.diary;
-   const indexOfUsersDiary = await _diary.findIndex((d) => { d.dairyId === dairyId })
-   if (!indexOfUsersDiary) {
+   // const dataForThisUser = await data.forEach((u) => { if (u.id === userId) { dataForThisUser = [...dataForThisUser, u] } });
+   const indexOfThisUser = await users.findIndex(u => u.id === userId)
+   if(!indexOfThisUser){
+      throw new Error('not found user to delete..');
+   }
+   // const _diary = dataForThisUser.diary;
+   const userDiary=users[indexOfThisUser].diary;
+   // const indexOfUsersDiary = await _diary.findIndex((d) => { d.dairyId === dairyId })
+   if(!userDiary){
+   // if (!indexOfUsersDiary) {
       throw new Error('not found this diary');
    }
-
-   data=data.map(x=>x)
+   const diaryWithIdIndex = await userDiary.findIndex((d) => { d.dairyId === dairyId });
+   userDiary.splice(diaryWithIdIndex,1);
+   Object.assign(users[indexOfThisUser].diary, userDiary);
+   updateData(users)
+   // data=data.map(x=>x)
    // const slicedArray = mockData.map(d => ({...d, data: d.data.slice(0, 3)}))
    // console.log(slicedArray)
-
-
 //TODO- Need to cut an index that is within an index- how do it?
-
-   data.splice(indexOfThisUser[indexOfThisUser], 1);
-
+   // data.splice(indexOfThisUser[indexOfThisUser], 1);
 }
 module.exports = {
    getDiary, addDiary, updateDiary, deleteDairy
