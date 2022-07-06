@@ -1,7 +1,6 @@
 const MeetingService = require('../Services/meeting.service');
 
 
-
 module.exports.getAllTheMeetings = async function (req, res, next) {
     try {
         const { businessId  } = req.query;

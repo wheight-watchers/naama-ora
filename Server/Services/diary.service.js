@@ -47,9 +47,11 @@ async function updateDiary(userId, dairyId, diary) {
 }
 async function deleteDairy(userId, dairyId) {
    const data = await getData();
-   if (!data) {
-      throw new Error('not found user to delete..');
-   }
+   // if (!data) {
+   //    throw new Error('not found user to delete..');
+   // }
+   const indexOfUser = await users.findIndex((user) => user.id === id);
+   
    const dataForThisUser = await data.forEach((u) => { if (u.id === userId) { dataForThisUser = [...dataForThisUser, u] } });
    const indexOfThisUser = await data.findIndex(u => u.id === userId)
    const _diary = dataForThisUser.diary;

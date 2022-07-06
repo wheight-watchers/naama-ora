@@ -1,7 +1,7 @@
-const { post } = require("../Controllers/user.controller");
-const UserModel = require("../models/user.model");
+// const { post } = require("../Controllers/user.controller");
+// const UserModel = require("../models/user.model");
 const fs = require("fs");
-const { json } = require("body-parser");
+// const { json } = require("body-parser");
 // const dataFromFile=fs.readFileSync('../file.json');
 // myData=JSON.parse(dataFromFile);
 let users_count = 4;
@@ -47,6 +47,9 @@ const getUser = async (id) => {
 const deleteUser = async (id) => {
   const users = await getData();
   const index = await users.findIndex((user) => user.id === id);
+  if(index===-1){
+    throw new Error(`user with id ${id} not found`);
+  }
   users.splice(index, 1);
   await updateData(users);
   // return myData.users.filter((user)=>user.id!==id);
