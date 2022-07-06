@@ -40,7 +40,7 @@ async function updateDiary(userId, dairyId, diary) {
    if (!specificDiary) {
       throw new Error('not found specific diary');
    }
-   Object.assign(data, specificDiary);
+   Object.assign(data, diary);
    await updateData(data);
    return data;
 

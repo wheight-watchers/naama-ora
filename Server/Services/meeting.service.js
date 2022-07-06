@@ -137,12 +137,6 @@ module.exports = {
 
 
 
-
-
-
-
-
-
 // async function updateMeeting(id, meeting) {
 
 // }
