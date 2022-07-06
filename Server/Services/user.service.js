@@ -4,7 +4,8 @@ const fs = require("fs");
 const { json } = require("body-parser");
 // const dataFromFile=fs.readFileSync('../file.json');
 // myData=JSON.parse(dataFromFile);
-let users_count = 4;
+// let users_count = 4;
+const uuid=require('uuid')
 
 const getData = async () =>
   fs.readFile("../file.json").then((data) => JSON.parse(data.users));
@@ -15,10 +16,10 @@ const addUser = async (user) => {
   if (!user.firstName || !user.lastName || !user.password || !user.email) {
     throw new Error("user must include username ,email and password");
   }
-  // const id = uuidv4();
-  // user.id = id;
-  user.id = users_count + 1;
-  users_count += 1;
+  const id = uuid.v4();
+  user.id = id;
+//   user.id = users_count + 1;
+//   users_count += 1;
   const users = (await getData()) || [];
   const exists = users.find(
     (_user) => _user.email === user.email || _user.password === user.password
