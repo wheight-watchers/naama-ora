@@ -1,7 +1,8 @@
 const dairyService= require('../Services/diary.service')
 module.exports.getDiary=async function(req,res,next){
     try{
-        const allDiary=await dairyService.getDiary(req.params.userId);
+        const{userId}=req.params
+        const allDiary=await dairyService.getDiary(userId);
         res.send(allDiary)
     }
     catch(error){
@@ -10,7 +11,9 @@ module.exports.getDiary=async function(req,res,next){
 }
 module.exports.addDiary=async function(req,res,next){
     try{
-        const diaryAdded=await dairyService.addDiary(req.params.userId,req.body);
+        const {userId}=req.params;
+        const{diary}=req.body
+        const diaryAdded=await dairyService.addDiary(userId,diary);
         res.send(diaryAdded)
     }
     catch(error){
@@ -19,7 +22,10 @@ module.exports.addDiary=async function(req,res,next){
 }
 module.exports.updateDiary=async function(req,res,next){
     try{
-        const updateDairy=await dairyService.updateDiary(req.params.userId,req.params.dairyId,req.body);
+        const {userId}=req.params;
+        const{date,summary}=req.body;
+        const{dairyId}=req.query;
+        const updateDairy=await dairyService.updateDiary(userId,dairyId,date,summary);
         res.send(updateDairy)
     }
     catch(error){
@@ -28,7 +34,9 @@ module.exports.updateDiary=async function(req,res,next){
 }
 module.exports.deleteDairy=async function(req,res,next){
     try{
-        const updateDairy=await dairyService.deleteDairy(req.params.userId,req.params.dairyId);
+        const {userId}=req.params;
+        const{dairyId}=req.query;
+        const updateDairy=await dairyService.deleteDairy(userId,dairyId);
         res.send(updateDairy)
     }
     catch(error){
